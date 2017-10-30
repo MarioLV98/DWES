@@ -1,0 +1,31 @@
+body{
+	text-align:center;
+	font-style:italic;
+	font-family:'Helvetica','Verdana','Monaco','sans-serif';
+	background-image:url('imagenfondo.jpg');
+}
+
+ul>li{
+	list-style-type:none;
+}
+
+h1{
+	font-size:2em;
+	color:pink;
+}
+
+li:hover{
+	background-color:pink;
+}
+
+#repositorio1{
+    float:right;
+    width: 150px;
+    
+}
+
+#repositorio2{
+    float:left;
+    width: 150px;
+    
+}
