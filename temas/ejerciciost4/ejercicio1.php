@@ -15,8 +15,13 @@
                 $mysqli = new mysqli($ip, $usuario, $contraseña, $bd); 
                 if ($mysqli->connect_errno) { 
                 echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error; 
+                }else{
+                    echo "Conexion establecida con exito <br>";
+                    echo $mysqli->host_info . "<br>"; 
+                    echo $mysqli->server_info."<br>";
+                    echo $mysqli->client_info."<br>";
                 } 
-                echo $mysqli->host_info . "<br>"; 
+               
             ?> 
             
     </body> 
