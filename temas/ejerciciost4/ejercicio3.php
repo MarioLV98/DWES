@@ -100,20 +100,20 @@
 
                     $orden = "INSERT INTO Departamento (CodDepartamento,DescDepartamento,FechaBaja) VALUES(?,?,?)";
   
-                    $sentencia = $conexion->prepare($orden);
+                    $sql = $conexion->prepare($orden);
        
-                    $sentencia->bind_param("sss", $departamento['CodDepartamento'], $departamento['DescDepartamento'], $departamento['FechaBaja']);
+                    $sql->bind_param("sss", $departamento['CodDepartamento'], $departamento['DescDepartamento'], $departamento['FechaBaja']);
                  
-                    $sentencia->execute();
+                    $sql->execute();
                    
-                    $num = $sentencia->affected_rows;
+                    $num = $sql->affected_rows;
                     if ($num == 1) {
                         echo ("El departamento ha sido insertado");
                     } else {
                         echo ("Error al insertar el departamento".$conexion->error);
                     }
                     
-                    $sentencia->close();
+                    $sql->close();
                 }
              
                 $conexion->close();

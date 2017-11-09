@@ -43,51 +43,32 @@
                 } else {
                     $DescDepartamento = $_POST['DescDepartamento'];
                 }
-
-              echo $_POST['DescDepartamento'];
             }
-           
             if (!filter_has_var(INPUT_POST, 'enviar') || $error) {
                 ?>
-         
-
+                 <form action="<?PHP echo $_SERVER['PHP_SELF']; ?>" method="post">
                     <label for="DescDepartamento">Descripcion:</label><br />
                     <input type="text" name="DescDepartamento" value="<?php echo $DescDepartamento ?>"<br />
                 <?PHP echo $ErrorDepartamento ?>
-
-
                     <input type="submit" name="enviar" value="Enviar">
-
                 </form>
                     <?PHP
                 } else {
-
-                    $orden = "select * from Departamento where DescDepartamento like concat(%,?,%)";
-  
-                    $sentencia = $conexion->prepare($orden);
-       
-                    $sentencia->bind_param("s", $DescDepartamento);
-                 
-                    $sentencia->execute();
-                   
-                    
-                    $resultado=$sentencia->get_result();
-                    
+                    $orden = "select * from Departamento where DescDepartamento like concat('%',?,'%')";
+                    $sql = $conexion->prepare($orden);
+                    $sql->bind_param("s", $DescDepartamento);
+                    $sql->execute();
+                    $resultado=$sql->get_result();
                     $departamento=$resultado->fetch_object();
-                    
                         while($departamento!=null){
-                          echo "Codigo dpto: ".$departamento->CodDepartamento;
-                         echo "Descripcion dpto".$departamento->DescDepartamento;
-                         	$departamento=$resultado->fetch_object();
+                          echo "Codigo dpto: ".$departamento->CodDepartamento."<br>";
+                          echo "Descripcion dpto: ".$departamento->DescDepartamento."<br><br>";
+                          $departamento=$resultado->fetch_object();
                         }
-                    
-                    $sentencia->close();
+                    $sql->close();
                 }
-             
                 $conexion->close();
             }
             ?>
-
-
     </body>
 </html>

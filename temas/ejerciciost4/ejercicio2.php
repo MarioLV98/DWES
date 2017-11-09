@@ -12,9 +12,9 @@
         
         $orden = "SELECT * FROM Departamento";
       
-        $sentencia=$conexion->prepare($orden);
-        $sentencia->execute();
-        $resultado=$sentencia->get_result();
+        $sql=$conexion->prepare($orden);
+        $sql->execute();
+        $resultado=$sql->get_result();
         $departamentos=$resultado->fetch_all(MYSQLI_ASSOC);
         $numRegistros = $resultado->num_rows;
         echo "Numero de registros $numRegistros<br/>";

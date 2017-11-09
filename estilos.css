@@ -29,3 +29,15 @@ li:hover{
     width: 150px;
     
 }
+
+#mysqli{
+    background-color: gray;
+    width:35%;
+    float:left;
+}
+
+#pdo{
+    background-color: gray;
+    width:35%;
+    float:right;
+}

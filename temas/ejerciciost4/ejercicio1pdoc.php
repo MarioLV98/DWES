@@ -1,4 +1,4 @@
 <?php
-	highlight_file('ejercicio1.php');
+	highlight_file('ejercicio1pdo.php');
 ?>
 
