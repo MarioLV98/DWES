@@ -58,12 +58,12 @@
                     $sql = $conexion->prepare($orden);
                     $sql->bind_param("s", $DescDepartamento);
                     $sql->execute();
-                    $resultado=$sql->get_result();
-                    $departamento=$resultado->fetch_object();
+                    $res=$sql->get_result();
+                    $departamento=$res->fetch_object();
                         while($departamento!=null){
                           echo "Codigo dpto: ".$departamento->CodDepartamento."<br>";
                           echo "Descripcion dpto: ".$departamento->DescDepartamento."<br><br>";
-                          $departamento=$resultado->fetch_object();
+                          $departamento=$res->fetch_object();
                         }
                     $sql->close();
                 }

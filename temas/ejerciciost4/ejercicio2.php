@@ -14,9 +14,9 @@
       
         $sql=$conexion->prepare($orden);
         $sql->execute();
-        $resultado=$sql->get_result();
-        $departamentos=$resultado->fetch_all(MYSQLI_ASSOC);
-        $numRegistros = $resultado->num_rows;
+        $res=$sql->get_result();
+        $departamentos=$res->fetch_all(MYSQLI_ASSOC);
+        $numRegistros = $res->num_rows;
         echo "Numero de registros $numRegistros<br/>";
         
         for($i = 0; $i < count($departamentos);$i++){

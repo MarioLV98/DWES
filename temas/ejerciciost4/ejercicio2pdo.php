@@ -10,9 +10,9 @@ try {
      //Orden sql
     $sql = "select * from Departamento";
     //Ejecutamos la consulta
-   $resultado =  $conexion->query($sql);
+   $res =  $conexion->query($sql);
     //Si hay resultados se mostraran
-    while ($departamento=$resultado->fetch(PDO::FETCH_OBJ)){
+    while ($departamento=$res->fetch(PDO::FETCH_OBJ)){
         echo "Codigo de departamento: ".$departamento->CodDepartamento."<br>";
         echo "Descripcion departamento: ".$departamento->DescDepartamento."<br>";
         echo "Fecha expriacion: ".$departamento->FechaBaja."<br><br>";   
