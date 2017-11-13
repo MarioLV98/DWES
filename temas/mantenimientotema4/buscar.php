@@ -8,7 +8,13 @@
     </head>
     <body>
 
-
+        <ul>
+            <li><a href="buscar.php">Buscar</a></li>
+            <li><a href="insertar.php">Insertar</a></li>
+            <li><a href="importar.php">Importar</a></li>
+            <li><a href="">Exportar</a></li>
+            
+        </ul>
         <?php
         //Añadimos el fichero con los datos de la conexion
         //Añadimos el fichero con la libreria de validacion

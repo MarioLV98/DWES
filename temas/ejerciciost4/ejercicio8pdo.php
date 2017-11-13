@@ -1,17 +1,12 @@
 <?php
-/*
-  Autor: Juan Carlos Pastor Regueras
-  Página web que toma datos (código y descripción) de la tabla Departamento y guarda en un fichero departamento.xml. (COPIA DE SEGURIDAD / EXPORTAR)
-  Fecha de modificacion: 28-10-2017
- */
-//Comprobamos si ha habido algun error de conexion, en tal caso mostramos el codigo de error
+
 include "configuracion.php";
 try {
-    //Creamos la conexion a la base de datos
+    
     $conexion = new PDO($datosConexion,$usuario,$contraseña);
-    //Definición de los atributos para lanzar una excepcion si se produce un error
+  
     $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    //Si no se produce ningun error empezamos la ejecucion
+    
     if (!filter_has_var(INPUT_POST, 'Exportar')) {
         ?>
         <html lang="en" xmlns="http://www.w3.org/1999/html">
@@ -28,7 +23,7 @@ try {
     } else {
         $consulta = "SELECT * from Departamento"; //Consulta de todos los registros para generar la tabla
         $sentencia = $conexion->prepare($consulta); //Se almacena el resultado de la consulta
-        $res = $sentencia->execute();
+        $resultado = $sentencia->execute();
         //Cotenido del fichero XML
         $xml = new SimpleXMLElement('<?xml version="1.0" encoding="UTF-8"?><Departamentos></Departamentos>'); //creación del XML y su nodo raiz
         header("Content-type: text/xml");
@@ -37,7 +32,7 @@ try {
             $departamento->addChild('CodDepartamento', $reg->CodDepartamento); //nuevo elemento hijo de departamento
             $departamento->addChild('DescDepartamento', $reg->DescDepartamento); //nuevo elemento hijo de departamento
         }
-        print($xml->asXML()); //Se imprime el xml creado
+        $xml->asXML("Departamentos.xml"); //Se imprime el xml creado
     }
     //Cerramos la conexion
     unset($conexion);
