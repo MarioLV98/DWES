@@ -5,15 +5,16 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link rel="stylesheet" type="text/css" href="estilos.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <title>Mantenimiento</title>
     </head>
     <body>
         
          <ul>
-            <li><a href="buscar.php">Buscar</a></li>
-            <li><a href="insertar.php">Insertar</a></li>
-            <li><a href="importar.php">Importar</a></li>
-            <li><a href="">Exportar</a></li>
+            <li><a href="buscar.php"><i class="material-icons">search</i>Buscar</a></li>
+            <li><a href="insertar.php"><i class="material-icons">add</i>Insertar</a></li>
+            <li><a href="importar.php"><i class="material-icons">cloud_download</i>Importar</a></li>
+            <li><a href=""><i class="material-icons">cloud_upload</i>Exportar</a></li>
             
         </ul>
         <?php
