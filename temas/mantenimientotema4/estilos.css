@@ -11,10 +11,22 @@ and open the template in the editor.
 body {
     background-color: khaki;
     font-family: Helvetica, Arial, sans-serif;
+    width: 100%;
+    heigth:100%;
 }
 
 form{
     text-align: center;
+    margin: 0 auto;
+}
+
+footer{
+    text-align: center;
+    color: white;
+    background-color: yellowgreen;
+    margin-top: 310px;
+    width: 100%;
+    margin-left: -8px;
 }
 
 ul{
@@ -42,7 +54,7 @@ div{
     font-family: Helvetica, Arial, sans-serif;
     margin: 0 auto;
     width: 450px;
-    height: 150px;
+    height: 200px;
     background-color: lightskyblue;
     border-radius: 10px;
 }

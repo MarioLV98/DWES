@@ -9,14 +9,7 @@
         <title>Mantenimiento</title>
     </head>
     <body>   
-        
-         <ul>
-            <li><a href="buscar.php"><i class="material-icons">search</i>Buscar</a></li>
-            <li><a href="insertar.php"><i class="material-icons">add</i>Insertar</a></li>
-            <li><a href="importar.php"><i class="material-icons">cloud_download</i>Importar</a></li>
-            <li><a href=""><i class="material-icons">cloud_upload</i>Exportar</a></li>
-            
-        </ul>
+       
 <?php
  include 'configuracion.php';
 try {

@@ -1,109 +1,115 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <link rel="stylesheet" type="text/css" href="estilos.css">
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <title>Mantenimiento</title>
-    </head>
-    <body>
-        
-         <ul>
-            <li><a href="buscar.php"><i class="material-icons">search</i>Buscar</a></li>
-            <li><a href="insertar.php"><i class="material-icons">add</i>Insertar</a></li>
-            <li><a href="importar.php"><i class="material-icons">cloud_download</i>Importar</a></li>
-            <li><a href=""><i class="material-icons">cloud_upload</i>Exportar</a></li>
-            
-        </ul>
-        <?php
-        include "configuracion.php";
+<?php
+include "configuracion.php";
+
+include "LibreriaValidacionFormulariosjc.php";
+
+define("MIN", 1);
+define("MAX", 3);
+$erroresCampos = array(
+    'CodDepartamento' => '',
+    'DescDepartamento' => ''
+);
+
+$arrayErrores = array(" ", "No ha introducido ningun valor<br />", "El valor introducido no es valido<br />", "Tamaño minimo no valido<br />", "Tamaño maximo no valido<br />");
+
+$error = false;
+
+$valida = 0;
+try {
+    //Creamos la conexion a la base de datos
+    $conexion = new PDO($datosConexion, $usuario, $contraseña);
+    //Definición de los atributos para lanzar una excepcion si se produce un error
+    $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    if (isset($_GET['CodDepartamento'])) {
 
 
-        include "LibreriaValidacionFormulariosjc.php";
-        define("MIN", 1);
-        define("MAX", 3);
-        $arrayErrores = array(" ", "No ha introducido ningun valor<br />", "El valor introducido no es valido<br />", "Tamaño minimo no valido<br />", "Tamaño maximo no valido<br />");
-        $error = false;
-        $valida = 0;
-        $departamento = array(
-            'CodDepartamento' => '',
-            'DescDepartamento' => ''
-        );
-       
-        $erroresCampos = array(
-            'CodDepartamento' => '',
-            'DescDepartamento' => ''
-        );
-         //SI SE PULSA EL BOTON ENVIAR SE REALIZARA LA VALIDACION DE LOS DATOS INRODUCIDOS
-          if(isset($_POST['cancelar'])) { 
-        header('Location: buscar.php'); 
-    } 
-        if (filter_has_var(INPUT_POST, 'enviar')) {
-            $valida = validarCadenaAlfanumerica($_POST['CodDepartamento'], MIN, MAX);
-            if ($valida != 0) {
-                $erroresCampos['CodDepartamento'] = $arrayErrores[$valida];
-                $error = true;
-            } else {
-                $departamento['CodDepartamento'] = $_POST['CodDepartamento'];
-            }
-            $valida = validarCadenaAlfanumerica($_POST['DescDepartamento'], 1, 15);
-            if ($valida != 0) {
-                $erroresCampos['DescDepartamento'] = $arrayErrores[$valida];
-                $erroresEstilos['DescDepartamento'] = "error";
-                $error = true;
-            } else {
-                $departamento['DescDepartamento'] = $_POST['DescDepartamento'];
-            }
-        }
-        //SI NO SE HA PULSADO ENVIAR O SI HAY UN ERROR NOS MUESTRA EL FORMULARIO
-        if (!filter_has_var(INPUT_POST, 'enviar') || $error) {
+
+        $CodDepartamentoBuscar = $_GET['CodDepartamento'];
+        $consulta = "SELECT * FROM Departamento WHERE CodDepartamento = :CodDepartamento";
+        //Preparamos la sentencia
+        $sentencia = $conexion->prepare($consulta);
+        //Inyectamos los parametros  en el query
+        $sentencia->bindParam(":CodDepartamento", $CodDepartamentoBuscar);
+        //La ejecutamos
+        $sentencia->execute();
+        if ($sentencia->rowCount() == 1) {
+            $departamento = $sentencia->fetch(PDO::FETCH_OBJ);
             ?>
-        <div>
-            <form action="<?PHP echo $_SERVER['PHP_SELF']. "?CodDepartamento=$codDptoBuscar"; ?>" method="post">
-                <label for="CodDepartamento">Codigo Departamento:</label><br />
-                <input type="text" name="CodDepartamento" value="<?php echo $departamento['CodDepartamento']; ?>" class="<?PHP echo $erroresEstilos['CodDepartamento']; ?>" readonly=""><br /><br />
-            <?PHP echo $erroresCampos['CodDepartamento']; ?>
-                <label for="DescDepartamento">Descripcion Departamento:</label><br />
-                <input type="text" name="DescDepartamento" value="<?php echo $departamento['DescDepartamento']; ?>" class="<?PHP echo $erroresEstilos['DescDepartamento']; ?>"><br /><br />
-                <?PHP echo $erroresCampos['DescDepartamento']; ?>
+            <!DOCTYPE html>
+            <html lang="en">
+                <head>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+                    <link rel="stylesheet" type="text/css" href="estilos.css">
+                    <title>Mantenimiento</title>
+                </head>
+                <body>
+                    <form action="<?PHP echo $_SERVER['PHP_SELF'] . "?CodDepartamento=$CodDepartamentoBuscar"; ?>" method="post">
 
-                <input type="submit" name="enviar" value="Enviar">
-                <input type="submit" name="cancelar" value="Cancelar">
-            </form>
-            </div>
-                <?PHP
-            } else {
+                        <label for="CodDepartamento">Codigo Departamento:</label><br />
+                        <input type="text" name="CodDepartamento" value="<?php echo $departamento->CodDepartamento; ?>" readonly><br /><br />
 
-                try {
-                    //Realizamos la conexion con la BD  usando los datos de configuracion.php
-                    $conexion = new PDO($datosConexion, $usuario, $contraseña);
-                    //Creamos los atributos para lanzar excepcion en caso de error
-                    $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                    //Orden sql
-                    $orden = "update from Departamento set DescDepartamento =(\"" . $departamento['DescDepartamento'] . "\")  where CodDepartamento=(\"" . $departamento['CodDepartamento'] . "\")";
-                    //Ejecutamos la consulta y vemos los registros afectados
-                    
-                     $codDptoBuscar=$_GET['CodDepartamento'];
-                     
-                    $num = $conexion->exec($orden);
-                    //Si el numero de registros afectados es 1 la inseccion es existosa
-                    if ($num = 1) {
-                        echo "Modificacion correcta";
-                    } else {
-                        echo "Error";
+
+                        <label for="DescDepartamento">Descripcion Departamento:</label><br />
+                        <input type="text" name="DescDepartamento" value="<?php echo $departamento->DescDepartamento; ?>"><br /><br />
+
+
+                        <input type="submit" name="Editar" value="Editar">
+                        <input type="submit" name="Cancelar" value="Cancelar">
+
+                    </form>
+                    <?php
+                    if (isset($_POST['Cancelar'])) {
+                         echo "<script> window.location='buscar.php'</script>";
                     }
-                     //Cuando hayamos terminado cerramos la conexion
-                    unset($conexion);
-                     //Capturamos la excepcion
-                } catch (PDOException $Pdoe) {
-                    echo "Error<br>";
-                    echo($Pdoe->getMessage());
-                    //En caso de error se cierra la conexion
-                    unset($conexion);
+                    if (isset($_POST['Editar'])) {
+                        $departamento->CodDepartamento = limpiarCampos($_POST['CodDepartamento']);
+                        //Ejecutamos la funcion de validacion y recogemos el valor devuelto
+                        $valida = validarCadenaAlfanumerica(limpiarCampos($_POST['DescDepartamento']));
+                        //Si el valor es distinto de 0 ha habido un error y procedemos a tratarlo
+                        if ($valida != 0) {
+                            //Asignamos el error producido al valor correspondiente en el array de errores
+                            $erroresCampos['DescDepartamento'] = $arrayErrores[$valida];
+                            //Activamos el class correspondiente para marcar el borde del campo en rojo
+                            $erroresEstilos['DescDepartamento'] = "error";
+                            //Como ha habido un error, la variable de control $error toma el valor true
+                            $error = true;
+                        } else {
+                            //Si no ha habido ningun error, guardamos el valor enviado en el array de departamento
+                            $departamento->DescDepartamento = limpiarCampos($_POST['DescDepartamento']);
+                        }
+                        if (!$error) {
+                            $consulta = "UPDATE Departamento SET DescDepartamento = :DescDepartamento WHERE CodDepartamento = :CodDepartamento";
+                            //Preparamos la sentencia
+                            $sentencia = $conexion->prepare($consulta);
+                            //Inyectamos los parametros  en el query
+                            $sentencia->bindParam(":CodDepartamento", $departamento->CodDepartamento);
+                            $sentencia->bindParam(":DescDepartamento", $departamento->DescDepartamento);
+                            //La ejecutamos
+                            if ($sentencia->execute()) {
+                                // header('Location: buscar.php');
+                                echo "<script> window.location='buscar.php'</script>";
+                            }
+                        } else {
+                            echo "<p>" . $erroresCampos['DescDepartamento'] . "</p>";
+                        }
+                    }
+                } else {
+                    echo "El registro buscado no existe";
+                    //sleep(5);
+                    echo "<script> window.location='buscar.php'</script>";
                 }
+            } else {
+                echo "<script> window.location='buscar.php'</script>";
             }
-            ?>
+        } catch (PDOException $PdoE) {
+            //Capturamos la excepcion en caso de que se produzca un error,mostramos el mensaje de error y deshacemos la conexion
+            echo($PdoE->getMessage());
+            unset($conexion);
+        }
+        ?>
+
     </body>
 </html>

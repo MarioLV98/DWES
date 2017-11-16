@@ -46,7 +46,7 @@
                 <label for="DescDepartamento">Descripcion:</label><br />
                 <input type="text" name="DescDepartamento" value="<?php echo $DescDepartamento ?>"<br />
                 <?PHP echo $ErrorDepartamento ?>
-                <input id="boton" type="submit" name="filtrar" value="Filtrar">
+                <input id="boton" type="submit" name="filtrar" value="Buscar">
 
             </form>
         </div>    
@@ -71,14 +71,16 @@
         <table border="1">
             <tr>
                 <th>Codigo Dpto</th>
-                <th>Descripcion</th>          
+                <th>Descripcion</th>
+                <th>Modificaciones</th>
             </tr>
                 <?PHP
                 while ($departamento = $sql->fetch(PDO::FETCH_OBJ)) {
                     
                    echo "<tr>" 
            ."<td>".$departamento->CodDepartamento."</td>" 
-           ."<td>".$departamento->DescDepartamento."</td>"
+           ."<td>".$departamento->DescDepartamento."</td>"                
+           ."<td><a href='modificar.php?CodDepartamento=$departamento->CodDepartamento'><i class=\"material-icons\">create</i></a><a href='borrar2.php?CodDepartamento=$departamento->CodDepartamento'> <i class=\"material-icons\">delete</i> </a><td>"                
            ."</tr>"; 
                 }
                  ?>
@@ -98,7 +100,9 @@
         
         ?>
 
-
+        <footer>
+            <h3>Mario Labra Villar</h3>
+        </footer>
     </body>
 </html>
 
