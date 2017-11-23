@@ -24,6 +24,10 @@ main{
     padding: 10px;
 }
 
+#err{
+    color: red;
+}
+
 form{
     text-align: center;
     margin: 0 auto;

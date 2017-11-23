@@ -15,7 +15,7 @@ and open the template in the editor.
         //Autor: Mario Labra Villar
         //Ultima modificación: 17/11/2017 
         include 'configuracion.php';
-        include "LibreriaValidacionFormulariosjc.php"; 
+        include "LibreriaValidacionFormulariosjc.php";
 
         define("MIN", 5);       //Constante que indica minimo de valores de campo de texto
         define("MAX", 30);      //Constante que indica maximo de valores de campo de texto
@@ -23,16 +23,15 @@ and open the template in the editor.
         $error = false;
         $arrayErrores = array(" ", "No ha introducido ningun valor<br />", "El valor introducido no es valido<br />", "Tamaño minimo no valido<br />", "Tamaño maximo no valido<br />", "El registro ya existe<br />"); //array en el que se almacenan los diferentes tipos de errores que puede dar dependiendo del valor que devuelva la libreria al validar
         $valida = 0;
-        
+
         try {
-        $conexion = new PDO($datosConexion, $usuario, $contraseña);
-        $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        
-         } catch (PDOException $PdoE) {
-        //Capturamos la excepcion en caso de que se produzca un error,mostramos el mensaje de error y deshacemos la conexion
-        echo($PdoE->getMessage());
-        unset($conexion);
-    }
+            $conexion = new PDO($datosConexion, $usuario, $contraseña);
+            $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        } catch (PDOException $PdoE) {
+            //Capturamos la excepcion en caso de que se produzca un error,mostramos el mensaje de error y deshacemos la conexion
+            echo($PdoE->getMessage());
+            unset($conexion);
+        }
 
 
 
@@ -79,11 +78,11 @@ and open the template in the editor.
         }
 
         if (filter_has_var(INPUT_POST, 'enviar')) { //SI SE PULSA EL BOTON DE ENVIAR SE REALIZARAN LAS VALIDACIONES
-            $valida = validarCadenaAlfabetica($_POST['nombreyapellidos'],1, 50);
-            
+            $valida = validarCadenaAlfabetica($_POST['nombreyapellidos'], 1, 50);
+
             $sent = $conexion->query("select * from Encuesta where dni=\"" . $_POST['dni'] . "\"");
             $res = $sent->fetchColumn(0);
-           
+
 
             if ($res) {
                 $erroresCampos['dni'] = $arrayErrores[5];
@@ -120,8 +119,7 @@ and open the template in the editor.
             }
 
             if (!isset($_POST['materiales'])) {
-                $erroresCampos['materiales'] = $arrayErrores[1];
-                
+                $erroresCampos['materiales'] = $arrayErrores[0];
             } else {
                 $cuestionario['materiales'] = $_POST['materiales'];
                 $arrayMateriales[$cuestionario['materiales']] = 'checked';
@@ -146,20 +144,20 @@ and open the template in the editor.
                 <div id="encuesta">
                     <h4>Encuesta</h4>
                     <label for="nombreyapellidos">Nombre Y Apellidos:</label><br />
-                    <input type="text" name="nombreyapellidos" value="<?PHP echo $cuestionario['nombreyapellidos']; ?>"><br /><br />
-    <?PHP echo $erroresCampos['nombreyapellidos']; ?>
+                    <input type="text" name="nombreyapellidos" value="<?PHP echo $cuestionario['nombreyapellidos']; ?>"><br />
+                    <p id="err"><?PHP echo $erroresCampos['nombreyapellidos']; ?></p>
 
                     <label for="dni">Dni:</label><br />
-                    <input type="text" name="dni" value="<?PHP echo $cuestionario['dni']; ?>"><br /><br />
-    <?PHP echo $erroresCampos['dni']; ?>
+                    <input type="text" name="dni" value="<?PHP echo $cuestionario['dni']; ?>"><br />
+                    <p id="err"><?PHP echo $erroresCampos['dni']; ?></p>
 
                     <label for="satisfaccion">Satisfaccion[1-10]:</label><br />
-                    <input type="number" name="satisfaccion" value="<?PHP echo $cuestionario['satisfaccion']; ?>" max="10"><br /><br />
-    <?PHP echo $erroresCampos['satisfaccion']; ?>
+                    <input type="number" name="satisfaccion" value="<?PHP echo $cuestionario['satisfaccion']; ?>" max="10"><br />
+                    <p id="err"><?PHP echo $erroresCampos['satisfaccion']; ?></p>
 
                     <label for="fechanac">Fecha nacimiento:</label><br />
-                    <input type="date" name="fechanac" value="<?PHP echo $cuestionario['fechanac']; ?>"><br /><br />
-    <?PHP echo $erroresCampos['fechanac']; ?>
+                    <input type="date" name="fechanac" value="<?PHP echo $cuestionario['fechanac']; ?>"><br />
+                    <p id="err"><?PHP echo $erroresCampos['fechanac']; ?></p>
 
 
                     <label for="materiales">Materiales: </label><br />	
@@ -191,32 +189,30 @@ and open the template in the editor.
     <?php
     //EN EL CASO EN EL QUE TODO HAYA IDO BIEN PROCESAMOS EL FORUMULARIO Y MOSTRAMOS LOS DATOS POR PANTALLA
 } else {
-   
-        $consulta = "Insert into  Encuesta (nombreyapellidos,dni,satisfaccion,fechanac,materiales,opiniones,ip) VALUES (:nombreyapellidos,:dni,:satisfaccion,:fechanac,:materiales,:opiniones,:ip)";
-        //Preparamos la sentencia
-        $sentencia = $conexion->prepare($consulta);
-        //Inyectamos los parametros del insert en el query
-        $sentencia->bindParam(":nombreyapellidos", $cuestionario['nombreyapellidos']);
-        $sentencia->bindParam(":dni", $cuestionario['dni']);
-        $sentencia->bindParam(":satisfaccion", $cuestionario['satisfaccion']);
-        $sentencia->bindParam(":fechanac", $cuestionario['fechanac']);
-        $sentencia->bindParam(":opiniones", $cuestionario['opiniones']);
-        $sentencia->bindParam(":materiales", $cuestionario['materiales']);
-        $sentencia->bindParam(":ip", $cuestionario['ip']);
+
+    $consulta = "Insert into  Encuesta (nombreyapellidos,dni,satisfaccion,fechanac,materiales,opiniones,ip) VALUES (:nombreyapellidos,:dni,:satisfaccion,:fechanac,:materiales,:opiniones,:ip)";
+    //Preparamos la sentencia
+    $sentencia = $conexion->prepare($consulta);
+    //Inyectamos los parametros del insert en el query
+    $sentencia->bindParam(":nombreyapellidos", $cuestionario['nombreyapellidos']);
+    $sentencia->bindParam(":dni", $cuestionario['dni']);
+    $sentencia->bindParam(":satisfaccion", $cuestionario['satisfaccion']);
+    $sentencia->bindParam(":fechanac", $cuestionario['fechanac']);
+    $sentencia->bindParam(":opiniones", $cuestionario['opiniones']);
+    $sentencia->bindParam(":materiales", $cuestionario['materiales']);
+    $sentencia->bindParam(":ip", $cuestionario['ip']);
 
 
-        //Ejecutamos la consulta
-        try {
-            $sentencia->execute();
-            header("Location: index.php");
-        } catch (PDOException $PdoE) {
-            echo $PdoE->getMessage() . "<br>";
-            echo "<p>Inserccion erronea<p>";
-            echo "<a href='index.php'><button>Volver</button></a>";
-           
-        }
-        unset($conexion);
-   
+    //Ejecutamos la consulta
+    try {
+        $sentencia->execute();
+        header("Location: index.php");
+    } catch (PDOException $PdoE) {
+        echo $PdoE->getMessage() . "<br>";
+        echo "<p>Inserccion erronea<p>";
+        echo "<a href='index.php'><button>Volver</button></a>";
+    }
+    unset($conexion);
 }
 ?>
         <footer>
