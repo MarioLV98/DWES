@@ -34,7 +34,7 @@ try {
         //La ejecutamos
         $sentencia->execute();
         if ($sentencia->rowCount() == 1) {
-            $departamento = $sentencia->fetch(PDO::FETCH_OBJ);
+            $cuestionario = $sentencia->fetch(PDO::FETCH_OBJ);
             ?>
             <!DOCTYPE html>
             <html lang="en">
@@ -47,13 +47,13 @@ try {
                 </head>
                 <body>
                     <form action="<?PHP echo $_SERVER['PHP_SELF'] . "?CodDepartamento=$CodDepartamentoBorrar"; ?>" method="post">
-
+                        <h2>Borrar</h2>
                         <label for="CodDepartamento">Codigo Departamento:</label><br />
-                        <input type="text" name="CodDepartamento" value="<?php echo $departamento->CodDepartamento; ?>" readonly><br /><br />
+                        <input type="text" name="CodDepartamento" value="<?php echo $cuestionario->CodDepartamento; ?>" readonly><br /><br />
 
 
                         <label for="DescDepartamento">Descripcion Departamento:</label><br />
-                        <input type="text" name="DescDepartamento" value="<?php echo $departamento->DescDepartamento; ?>" readonly><br /><br />
+                        <input type="text" name="DescDepartamento" value="<?php echo $cuestionario->DescDepartamento; ?>" readonly><br /><br />
 
                         <p>Desea borrar?</p>
                         <input type="submit" name="Borrar" value="Borrar">

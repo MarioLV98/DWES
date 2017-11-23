@@ -18,16 +18,22 @@
          <?php
 	highlight_file('modificar.php');
         ?>
+            <h1>Borrar</h1>
+         <?php
+	highlight_file('borrar2.php');
+        ?>
           
           <h1>Importar</h1>
          <?php
 	highlight_file('importar.php');
         ?>
           
-          <h1>Borrar</h1>
+           <h1>Exportar</h1>
          <?php
-	highlight_file('borrar.php');
+	highlight_file('exportar.php');
         ?>
+          
+        
          
     </body>
 </html>

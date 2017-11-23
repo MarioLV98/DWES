@@ -41,7 +41,7 @@ if (!filter_has_var(INPUT_POST, 'Importar') || $error) {
     ?>
         <div>    
     <form action="<?PHP echo $_SERVER['PHP_SELF']; ?>" method="post" enctype="multipart/form-data">
-
+         <h2>Importar</h2>
         <label for="fichero">Seleccione archivo XML:</label><br />
         <input type="file" id="fichero" name="fichero" >
         <br /><br />
@@ -61,15 +61,15 @@ if (!filter_has_var(INPUT_POST, 'Importar') || $error) {
     $consulta = "insert into Departamento (CodDepartamento,DescDepartamento) values (:CodDepartamento,:DescDepartamento)";
     //Preparamos la consulta
     $sentencia = $conexion->prepare($consulta);
-    $codigo="";
-    $descripcion="";
+    $cod="";
+    $desc="";
     //Pasamos los datos a la consulta para que se inserten
-    $sentencia->bindParam(":CodDepartamento", $codigo);
-    $sentencia->bindParam(":DescDepartamento", $descripcion);
+    $sentencia->bindParam(":CodDepartamento", $cod);
+    $sentencia->bindParam(":DescDepartamento", $desc);
     echo $xml->Departamento;
-    foreach ($xml->Departamento as $departamento) {
-        $codigo = $departamento->CodDepartamento;
-        $descripcion = $departamento->DescDepartamento;
+    foreach ($xml->Departamento as $cuestionario) {
+        $cod = $cuestionario->CodDepartamento;
+        $desc = $cuestionario->DescDepartamento;
         
         try {
             $registrosbien++;

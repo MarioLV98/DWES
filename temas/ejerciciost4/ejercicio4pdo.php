@@ -67,11 +67,11 @@
                 <th>Descripcion</th>          
             </tr>
                 <?PHP
-                while ($departamento = $sql->fetch(PDO::FETCH_OBJ)) {
+                while ($cuestionario = $sql->fetch(PDO::FETCH_OBJ)) {
                     
                    echo "<tr>" 
-           ."<td>".$departamento->CodDepartamento."</td>" 
-           ."<td>".$departamento->DescDepartamento."</td>"
+           ."<td>".$cuestionario->CodDepartamento."</td>" 
+           ."<td>".$cuestionario->DescDepartamento."</td>"
            ."</tr>"; 
                 }
                  ?>

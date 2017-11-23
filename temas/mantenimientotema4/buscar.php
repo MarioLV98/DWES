@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link rel="stylesheet" type="text/css" href="estilos.css">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <title>Ejercicio 4</title>
+        <title>Buscar</title>
     </head>
     <body>
 
@@ -13,7 +13,8 @@
             <li><a href="buscar.php"><i class="material-icons">search</i>Buscar</a></li>
             <li><a href="insertar.php"><i class="material-icons">add</i>Insertar</a></li>
             <li><a href="importar.php"><i class="material-icons">cloud_download</i>Importar</a></li>
-            <li><a href=""><i class="material-icons">cloud_upload</i>Exportar</a></li>
+            <li><a href="exportar.php"><i class="material-icons">cloud_upload</i>Exportar</a></li>
+            <li><a href="../tema4/indextema4.html"><i class="material-icons">trending_flat</i>Salir</a></li>
             
         </ul>
         <?php
@@ -43,6 +44,7 @@
             ?>
         <div>
             <form action="<?PHP echo $_SERVER['PHP_SELF']; ?>" method="post">
+                 <h2>Buscar</h2>
                 <label for="DescDepartamento">Descripcion:</label><br />
                 <input type="text" name="DescDepartamento" value="<?php echo $DescDepartamento ?>"<br />
                 <?PHP echo $ErrorDepartamento ?>
@@ -75,12 +77,12 @@
                 <th>Modificaciones</th>
             </tr>
                 <?PHP
-                while ($departamento = $sql->fetch(PDO::FETCH_OBJ)) {
+                while ($cuestionario = $sql->fetch(PDO::FETCH_OBJ)) {
                     
                    echo "<tr>" 
-           ."<td>".$departamento->CodDepartamento."</td>" 
-           ."<td>".$departamento->DescDepartamento."</td>"                
-           ."<td><a href='modificar.php?CodDepartamento=$departamento->CodDepartamento'><i class=\"material-icons\">create</i></a><a href='borrar2.php?CodDepartamento=$departamento->CodDepartamento'> <i class=\"material-icons\">delete</i> </a><td>"                
+           ."<td>".$cuestionario->CodDepartamento."</td>" 
+           ."<td>".$cuestionario->DescDepartamento."</td>"                
+           ."<td><a href='modificar.php?CodDepartamento=$cuestionario->CodDepartamento'><i class=\"material-icons\">create</i></a><a href='borrar2.php?CodDepartamento=$cuestionario->CodDepartamento'> <i class=\"material-icons\">delete</i> </a><td>"                
            ."</tr>"; 
                 }
                  ?>

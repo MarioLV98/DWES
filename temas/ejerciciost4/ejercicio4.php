@@ -59,11 +59,11 @@
                     $sql->bind_param("s", $DescDepartamento);
                     $sql->execute();
                     $res=$sql->get_result();
-                    $departamento=$res->fetch_object();
-                        while($departamento!=null){
-                          echo "Codigo dpto: ".$departamento->CodDepartamento."<br>";
-                          echo "Descripcion dpto: ".$departamento->DescDepartamento."<br><br>";
-                          $departamento=$res->fetch_object();
+                    $cuestionario=$res->fetch_object();
+                        while($cuestionario!=null){
+                          echo "Codigo dpto: ".$cuestionario->CodDepartamento."<br>";
+                          echo "Descripcion dpto: ".$cuestionario->DescDepartamento."<br><br>";
+                          $cuestionario=$res->fetch_object();
                         }
                     $sql->close();
                 }

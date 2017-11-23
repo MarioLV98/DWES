@@ -21,7 +21,7 @@
         $arrayErrores = array(" ", "No ha introducido ningun valor<br />", "El valor introducido no es valido<br />", "Tamaño minimo no valido<br />", "Tamaño maximo no valido<br />","Este código ya existe<br />");
         $error = false;
         $valida = 0;
-        $departamento = array(
+        $cuestionario = array(
             'CodDepartamento' => '',
             'DescDepartamento' => ''
         );
@@ -49,7 +49,7 @@
                 $erroresCampos['CodDepartamento'] = $arrayErrores[$valida];
                 $error = true;
             } else {
-                $departamento['CodDepartamento'] = $_POST['CodDepartamento'];
+                $cuestionario['CodDepartamento'] = $_POST['CodDepartamento'];
             }
 
             $valida = validarCadenaAlfanumerica($_POST['DescDepartamento'], 1, 15);
@@ -58,7 +58,7 @@
                 $erroresEstilos['DescDepartamento'] = "error";
                 $error = true;
             } else {
-                $departamento['DescDepartamento'] = $_POST['DescDepartamento'];
+                $cuestionario['DescDepartamento'] = $_POST['DescDepartamento'];
             }
         }
         //SI NO SE HA PULSADO ENVIAR O SI HAY UN ERROR NOS MUESTRA EL FORMULARIO
@@ -66,11 +66,12 @@
             ?>
             <div>
                 <form action="<?PHP echo $_SERVER['PHP_SELF']; ?>" method="post">
+                     <h2>Insertar</h2>
                     <label for="CodDepartamento">Codigo Departamento:</label><br />
-                    <input type="text" name="CodDepartamento" value="<?php echo $departamento['CodDepartamento']; ?>" class="<?PHP echo $erroresEstilos['CodDepartamento']; ?>"><br /><br />
+                    <input type="text" name="CodDepartamento" value="<?php echo $cuestionario['CodDepartamento']; ?>" class="<?PHP echo $erroresEstilos['CodDepartamento']; ?>"><br /><br />
                     <?PHP echo $erroresCampos['CodDepartamento']; ?>
                     <label for="DescDepartamento">Descripcion Departamento:</label><br />
-                    <input type="text" name="DescDepartamento" value="<?php echo $departamento['DescDepartamento']; ?>" class="<?PHP echo $erroresEstilos['DescDepartamento']; ?>"><br /><br />
+                    <input type="text" name="DescDepartamento" value="<?php echo $cuestionario['DescDepartamento']; ?>" class="<?PHP echo $erroresEstilos['DescDepartamento']; ?>"><br /><br />
                     <?PHP echo $erroresCampos['DescDepartamento']; ?>
 
                     <input type="submit" name="enviar" value="Enviar">
@@ -86,7 +87,7 @@
                 //Creamos los atributos para lanzar excepcion en caso de error
                 $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 //Orden sql
-                $orden = "insert into Departamento (CodDepartamento,DescDepartamento) values (\"" . $departamento['CodDepartamento'] . "\",\"" . $departamento['DescDepartamento'] . "\")";
+                $orden = "insert into Departamento (CodDepartamento,DescDepartamento) values (\"" . $cuestionario['CodDepartamento'] . "\",\"" . $cuestionario['DescDepartamento'] . "\")";
                 //Ejecutamos la consulta y vemos los registros afectados
                 $num = $conexion->exec($orden);
                 //Si el numero de registros afectados es 1 la inseccion es existosa

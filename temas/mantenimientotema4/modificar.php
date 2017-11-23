@@ -34,7 +34,7 @@ try {
         //La ejecutamos
         $sentencia->execute();
         if ($sentencia->rowCount() == 1) {
-            $departamento = $sentencia->fetch(PDO::FETCH_OBJ);
+            $cuestionario = $sentencia->fetch(PDO::FETCH_OBJ);
             ?>
             <!DOCTYPE html>
             <html lang="en">
@@ -47,13 +47,13 @@ try {
                 </head>
                 <body>
                     <form action="<?PHP echo $_SERVER['PHP_SELF'] . "?CodDepartamento=$CodDepartamentoBuscar"; ?>" method="post">
-
+                             <h2>Modificar</h2>
                         <label for="CodDepartamento">Codigo Departamento:</label><br />
-                        <input type="text" name="CodDepartamento" value="<?php echo $departamento->CodDepartamento; ?>" readonly><br /><br />
+                        <input type="text" name="CodDepartamento" value="<?php echo $cuestionario->CodDepartamento; ?>" readonly><br /><br />
 
 
                         <label for="DescDepartamento">Descripcion Departamento:</label><br />
-                        <input type="text" name="DescDepartamento" value="<?php echo $departamento->DescDepartamento; ?>"><br /><br />
+                        <input type="text" name="DescDepartamento" value="<?php echo $cuestionario->DescDepartamento; ?>"><br /><br />
 
 
                         <input type="submit" name="Editar" value="Editar">
@@ -65,7 +65,7 @@ try {
                          echo "<script> window.location='buscar.php'</script>";
                     }
                     if (isset($_POST['Editar'])) {
-                        $departamento->CodDepartamento = limpiarCampos($_POST['CodDepartamento']);
+                        $cuestionario->CodDepartamento = limpiarCampos($_POST['CodDepartamento']);
                         //Ejecutamos la funcion de validacion y recogemos el valor devuelto
                         $valida = validarCadenaAlfanumerica(limpiarCampos($_POST['DescDepartamento']));
                         //Si el valor es distinto de 0 ha habido un error y procedemos a tratarlo
@@ -78,15 +78,15 @@ try {
                             $error = true;
                         } else {
                             //Si no ha habido ningun error, guardamos el valor enviado en el array de departamento
-                            $departamento->DescDepartamento = limpiarCampos($_POST['DescDepartamento']);
+                            $cuestionario->DescDepartamento = limpiarCampos($_POST['DescDepartamento']);
                         }
                         if (!$error) {
                             $consulta = "UPDATE Departamento SET DescDepartamento = :DescDepartamento WHERE CodDepartamento = :CodDepartamento";
                             //Preparamos la sentencia
                             $sentencia = $conexion->prepare($consulta);
                             //Inyectamos los parametros  en el query
-                            $sentencia->bindParam(":CodDepartamento", $departamento->CodDepartamento);
-                            $sentencia->bindParam(":DescDepartamento", $departamento->DescDepartamento);
+                            $sentencia->bindParam(":CodDepartamento", $cuestionario->CodDepartamento);
+                            $sentencia->bindParam(":DescDepartamento", $cuestionario->DescDepartamento);
                             //La ejecutamos
                             if ($sentencia->execute()) {
                                 // header('Location: buscar.php');

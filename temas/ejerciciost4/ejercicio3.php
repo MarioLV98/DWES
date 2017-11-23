@@ -28,7 +28,7 @@
             $error = false;
             $valida = 0;
 
-            $departamento = array(
+            $cuestionario = array(
                 'CodDepartamento' => '',
                 'DescDepartamento' => '',
                 'FechaBaja' => ''
@@ -50,7 +50,7 @@
                     $error = true;
                    
                 } else {
-                    $departamento['CodDepartamento'] = $_POST['CodDepartamento'];
+                    $cuestionario['CodDepartamento'] = $_POST['CodDepartamento'];
                 }
 
 
@@ -60,7 +60,7 @@
                     $erroresEstilos['DescDepartamento'] = "error";
                     $error = true;
                 } else {
-                    $departamento['DescDepartamento'] = $_POST['DescDepartamento'];
+                    $cuestionario['DescDepartamento'] = $_POST['DescDepartamento'];
                 }
 
                 if (empty($_POST['FechaBaja'])) {
@@ -70,7 +70,7 @@
                     $error = true;
                 } else {
 
-                    $departamento['FechaBaja'] = $_POST['FechaBaja'];
+                    $cuestionario['FechaBaja'] = $_POST['FechaBaja'];
                 }
             }
            
@@ -79,19 +79,19 @@
                 <form action="<?PHP echo $_SERVER['PHP_SELF']; ?>" method="post">
 
                     <label for="CodDepartamento">Codigo Departamento:</label><br />
-                    <input type="text" name="CodDepartamento" value="<?php echo $departamento['CodDepartamento']; ?>" class="<?PHP echo $erroresEstilos['CodDepartamento']; ?>"><br /><br />
+                    <input type="text" name="CodDepartamento" value="<?php echo $cuestionario['CodDepartamento']; ?>" class="<?PHP echo $erroresEstilos['CodDepartamento']; ?>"><br /><br />
                 <?PHP echo $erroresCampos['CodDepartamento']; ?>
 
                     <label for="DescDepartamento">Descripcion Departamento:</label><br />
-                    <input type="text" name="DescDepartamento" value="<?php echo $departamento['DescDepartamento']; ?>" class="<?PHP echo $erroresEstilos['DescDepartamento']; ?>"><br /><br />
+                    <input type="text" name="DescDepartamento" value="<?php echo $cuestionario['DescDepartamento']; ?>" class="<?PHP echo $erroresEstilos['DescDepartamento']; ?>"><br /><br />
                 <?PHP echo $erroresCampos['DescDepartamento']; ?>
 
 
                     <label for="FechaBaja">Fecha Baja:</label><br />
-                    <input type="date" name="FechaBaja" value="<?php echo $departamento['FechaBaja']; ?>" class="<?PHP echo $erroresEstilos['FechaBaja']; ?>"><br /><br />
+                    <input type="date" name="FechaBaja" value="<?php echo $cuestionario['FechaBaja']; ?>" class="<?PHP echo $erroresEstilos['FechaBaja']; ?>"><br /><br />
                     <?PHP echo $erroresCampos['FechaBaja']; ?>
                         
-                    <?PHP echo $departamento['FechaBaja']; ?>
+                    <?PHP echo $cuestionario['FechaBaja']; ?>
                     <input type="submit" name="enviar" value="Enviar">
 
                 </form>
@@ -102,7 +102,7 @@
   
                     $sql = $conexion->prepare($orden);
        
-                    $sql->bind_param("sss", $departamento['CodDepartamento'], $departamento['DescDepartamento'], $departamento['FechaBaja']);
+                    $sql->bind_param("sss", $cuestionario['CodDepartamento'], $cuestionario['DescDepartamento'], $cuestionario['FechaBaja']);
                  
                     $sql->execute();
                    

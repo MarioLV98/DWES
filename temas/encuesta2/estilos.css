@@ -9,10 +9,19 @@ and open the template in the editor.
 */
 
 body {
-    background-color: khaki;
+    background-color:highlight;
     font-family: Helvetica, Arial, sans-serif;
     width: 100%;
     heigth:100%;
+    
+}
+
+main{
+    width: 70%;
+    height: 70%;
+    background-color: cornflowerblue;
+    margin: 0 auto;
+    padding: 10px;
 }
 
 form{
@@ -23,16 +32,19 @@ form{
 footer{
     text-align: center;
     color: white;
-    background-color: yellowgreen;
+    background-color: cadetblue;
     margin-top: 310px;
     width: 100%;
     margin-left: -8px;
+    position:fixed;
+    bottom: 0;
 }
 
 ul{
     background-color: yellowgreen;
     margin-top: -8px;
     margin-left: -10px;
+  
     
 }
 
@@ -53,10 +65,39 @@ ul>li:hover{
 div{
     font-family: Helvetica, Arial, sans-serif;
     margin: 0 auto;
-    width: 450px;
-    height: 200px;
+    width: 300px;
+    height: 650px;
     background-color: lightskyblue;
     border-radius: 10px;
+    text-align: left;
+    padding:15px;
+}
+
+#acceso{
+    background-color: cadetblue;
+    border-radius: 5px;
+    width:90px;
+    height: 20px;
+    display: inline-block;
+    float: left;
+    margin: 10px;
+    text-align: center;
+        
+    
+}
+
+#acceso:hover{
+    background-color: chartreuse;
+}
+
+img{
+    margin-left:400px;
+    
+}
+
+button{
+    padding: 10px;
+    margin: 0 auto;
 }
 
 #boton{
@@ -72,7 +113,7 @@ table {
     font-family: Helvetica, Arial, sans-serif; 
     width: 640px; 
     border-collapse: collapse;
-    margin: 0 auto;  
+     
 }
 td, th {
     border: 1px solid transparent; 
@@ -92,3 +133,6 @@ tr:nth-child(odd)
 td {
     background: #FEFEFE; 
 } 
+tr td:hover {
+    background: #666; color: #FFF; 
+}

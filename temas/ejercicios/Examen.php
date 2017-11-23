@@ -56,7 +56,7 @@
                 'Hombre' => '',
                 'Mujer' => ''
             );
-            $arrayMarca[$i] = array(//Array necesario para hacer checkbox
+            $arrayMateriales[$i] = array(//Array necesario para hacer checkbox
                 'Audi' => '',
                 'Mercedes' => '',
                 'Subaru' => '',
@@ -143,7 +143,7 @@
                 } else {
                     $cuestionario[$i]['marca'] = $_POST['marcas' . $i];
                     foreach ($cuestionario[$i]['marca'] as $valor) {
-                        $arrayMarca[$i][$valor] = "checked";
+                        $arrayMateriales[$i][$valor] = "checked";
                     }
                 }
             }
@@ -182,10 +182,10 @@
 
 
                     <label for="marcas0[]">Marcas: </label><br />	
-                    <input type="checkbox" name="marcas0[]" value="Audi" <?php echo $arrayMarca[0]['Audi']; ?>>Audi <br />
-                    <input type="checkbox" name="marcas0[]" value="Mercedes"  <?php echo $arrayMarca[0]['Mercedes']; ?>>Mercedes<br />
-                    <input type="checkbox" name="marcas0[]" value="Subaru" <?php echo $arrayMarca[0]['Subaru']; ?>>Subaru<br />
-                    <input type="checkbox" name="marcas0[]" value="Brabus" <?php echo $arrayMarca[0]['Brabus']; ?>>Brabus<br /><br />
+                    <input type="checkbox" name="marcas0[]" value="Audi" <?php echo $arrayMateriales[0]['Audi']; ?>>Audi <br />
+                    <input type="checkbox" name="marcas0[]" value="Mercedes"  <?php echo $arrayMateriales[0]['Mercedes']; ?>>Mercedes<br />
+                    <input type="checkbox" name="marcas0[]" value="Subaru" <?php echo $arrayMateriales[0]['Subaru']; ?>>Subaru<br />
+                    <input type="checkbox" name="marcas0[]" value="Brabus" <?php echo $arrayMateriales[0]['Brabus']; ?>>Brabus<br /><br />
                     <?PHP echo $erroresCampos[0]['marca']; ?>
 
                     <label for="caballos[0]">Caballos:</label><br />
@@ -225,10 +225,10 @@
     <?PHP echo $erroresCampos[1]['fechanac']; ?>
 
                     <label for="marcas1[]">Marcas: </label><br />	
-                    <input type="checkbox" name="marcas1[]" value="Audi" <?php echo $arrayMarca[1]['Audi']; ?>>Audi <br />
-                    <input type="checkbox" name="marcas1[]" value="Mercedes"  <?php echo $arrayMarca[1]['Mercedes']; ?>>Mercedes<br />
-                    <input type="checkbox" name="marcas1[]" value="Subaru" <?php echo $arrayMarca[1]['Subaru']; ?>>Subaru<br />
-                    <input type="checkbox" name="marcas1[]" value="Brabus" <?php echo $arrayMarca[1]['Brabus']; ?>>Brabus<br /><br />
+                    <input type="checkbox" name="marcas1[]" value="Audi" <?php echo $arrayMateriales[1]['Audi']; ?>>Audi <br />
+                    <input type="checkbox" name="marcas1[]" value="Mercedes"  <?php echo $arrayMateriales[1]['Mercedes']; ?>>Mercedes<br />
+                    <input type="checkbox" name="marcas1[]" value="Subaru" <?php echo $arrayMateriales[1]['Subaru']; ?>>Subaru<br />
+                    <input type="checkbox" name="marcas1[]" value="Brabus" <?php echo $arrayMateriales[1]['Brabus']; ?>>Brabus<br /><br />
                     <?PHP echo $erroresCampos[1]['marca']; ?>
 
 
@@ -272,10 +272,10 @@
                 <?PHP echo $erroresCampos[2]['fechanac']; ?>
 
                     <label for="marcas2[]">Marcas: </label><br />	
-                    <input type="checkbox" name="marcas2[]" value="Audi" <?php echo $arrayMarca[2]['Audi']; ?>>Audi <br />
-                    <input type="checkbox" name="marcas2[]" value="Mercedes"  <?php echo $arrayMarca[2]['Mercedes']; ?>>Mercedes<br />
-                    <input type="checkbox" name="marcas2[]" value="Subaru" <?php echo $arrayMarca[2]['Subaru']; ?>>Subaru<br />
-                    <input type="checkbox" name="marcas2[]" value="Brabus" <?php echo $arrayMarca[2]['Brabus']; ?>>Brabus<br /><br />
+                    <input type="checkbox" name="marcas2[]" value="Audi" <?php echo $arrayMateriales[2]['Audi']; ?>>Audi <br />
+                    <input type="checkbox" name="marcas2[]" value="Mercedes"  <?php echo $arrayMateriales[2]['Mercedes']; ?>>Mercedes<br />
+                    <input type="checkbox" name="marcas2[]" value="Subaru" <?php echo $arrayMateriales[2]['Subaru']; ?>>Subaru<br />
+                    <input type="checkbox" name="marcas2[]" value="Brabus" <?php echo $arrayMateriales[2]['Brabus']; ?>>Brabus<br /><br />
                 <?PHP echo $erroresCampos[2]['marca']; ?>
 
                     <label for="caballos[2]">Caballos:</label><br />

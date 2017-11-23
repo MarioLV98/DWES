@@ -12,10 +12,10 @@ try {
     //Ejecutamos la consulta
    $res =  $conexion->query($sql);
     //Si hay resultados se mostraran
-    while ($departamento=$res->fetch(PDO::FETCH_OBJ)){
-        echo "Codigo de departamento: ".$departamento->CodDepartamento."<br>";
-        echo "Descripcion departamento: ".$departamento->DescDepartamento."<br>";
-        echo "Fecha expriacion: ".$departamento->FechaBaja."<br><br>";   
+    while ($cuestionario=$res->fetch(PDO::FETCH_OBJ)){
+        echo "Codigo de departamento: ".$cuestionario->CodDepartamento."<br>";
+        echo "Descripcion departamento: ".$cuestionario->DescDepartamento."<br>";
+        echo "Fecha expriacion: ".$cuestionario->FechaBaja."<br><br>";   
     }
     //Cuando hayamos terminado cerramos la conexion
      unset($conexion);
