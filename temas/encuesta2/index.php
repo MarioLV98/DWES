@@ -10,6 +10,11 @@ body,h1,h2,h3,h4,h5 {font-family: "Gill Sans Extrabold", Helvetica, sans-serif }
 body {font-size:16px;}
 .w3-half img{margin-bottom:-6px;margin-top:16px;opacity:0.8;cursor:pointer}
 .w3-half img:hover{opacity:1}
+img.imagenFooter{
+    width: 100px;
+    height: 50px;
+}
+
 </style>
 <body>
 
@@ -67,8 +72,10 @@ body {font-size:16px;}
   
   
 
-<!-- W3.CSS Container -->
-<div class="w3-light-grey w3-container w3-padding-32" style="margin-top:75px;padding-right:58px"><p class="w3-right">Powered by Mario Labra Villar</p></div>
+
+
+<div class="w3-light-grey w3-container w3-padding-32" style="margin-top:75px;padding-right:58px"><a href="https://github.com/MarioLV98/dwes.git"><img class="imagenFooter" src="../../../github.PNG"/></a>
+                    <a  href="http://daw-usgit.sauces.local/MLV-1718/dwes"> <img  class="imagenFooter" src="../../../gitlab.PNG"/></a><p class="w3-right">Powered by Mario Labra Villar</p></div>
 
 <script>
 // Script to open and close sidebar

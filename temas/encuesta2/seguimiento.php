@@ -34,6 +34,7 @@
         try{
         $sentencia1->execute();
         }catch(PDOException $pdoe1){
+            echo "Error consulta 1<br>";
             echo $pdoe1->getMessage();
             unset($conexion); 
         }
@@ -51,6 +52,7 @@
         try{
         $sentencia2->execute();
         }catch(PDOException $pdoe2){
+             echo "Error consulta 2<br>";
             echo $pdoe2->getMessage();
             unset($conexion); 
         }
@@ -67,6 +69,7 @@
         try{
         $sentencia3->execute();
         }catch(PDOException $pdoe3){
+             echo "Error consulta 3<br>";
             echo $pdoe3->getMessage();
             unset($conexion); 
         }
@@ -104,6 +107,7 @@
         try{
         $sentencia4->execute();
         }catch(PDOException $pdoe4){
+             echo "Error consulta 4<br>";
             echo $pdoe4->getMessage();
             unset($conexion); 
         }
@@ -116,6 +120,7 @@
         try{
         $sentencia5->execute();
         }catch(PDOException $pdoe5){
+             echo "Error consulta 5<br>";
             echo $pdoe5->getMessage();
             unset($conexion); 
         }
