@@ -1,7 +1,7 @@
 <?php
 
 if (!isset($_SERVER['PHP_AUTH_USER'])) {
-    header('WWW-Authenticate: Basic Realm="Hola que tal"');
+    header('WWW-Authenticate: Basic Realm="MarioLabra"');
     header('HTTP/1.0 401 Unauthorized');
     echo "Has pulsado cancelar";
     exit;
@@ -30,13 +30,7 @@ if (!isset($_SERVER['PHP_AUTH_USER'])) {
         }
         
 ?>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <link rel="stylesheet" type="text/css" href="estilos.css">
-        <title>8pdo</title>
-    </head>
-    <body>
+
 <?php
 
         
@@ -86,9 +80,21 @@ if (!isset($_SERVER['PHP_AUTH_USER'])) {
         
         
         session_destroy();
+    }else{
+        
+    header('WWW-Authenticate: Basic Realm="MarioLabra"');
+    header('HTTP/1.0 401 Unauthorized');
+    echo "Has pulsado cancelar";
     }
 }
 ?>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="estilos.css">
+        <title>8pdo</title>
+    </head>
+    <body>
  </body>
 </html>
 

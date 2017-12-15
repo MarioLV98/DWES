@@ -67,3 +67,9 @@ td {
 tr td:hover {
     background: #666; color: #FFF; 
 }
+
+img{
+    width:200px;
+    height: 200px;
+    display: inline;
+}

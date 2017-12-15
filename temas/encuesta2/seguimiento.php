@@ -27,9 +27,9 @@
         };
         
         //Sentencia sql
-        $numeroalumnos= "select count(distinct dni) as NumeroParticipantes from Encuesta";
+        $numeropersonas= "select count(distinct dni) as NumeroParticipantes from Encuesta";
         //Preparamos la consulta
-        $sentencia1=$conexion->prepare($numeroalumnos);
+        $sentencia1=$conexion->prepare($numeropersonas);
         //Ejecutamos la consulta
         try{
         $sentencia1->execute();
@@ -39,10 +39,10 @@
             unset($conexion); 
         }
         //Guardamos el resultado en una variable
-        $resultadoalumno=$sentencia1->fetch(PDO::FETCH_OBJ);
+        $resultadopersonas=$sentencia1->fetch(PDO::FETCH_OBJ);
         
         //Mostramos el resultado
-        echo "Numero alumnos:" .$resultadoalumno->NumeroParticipantes."<br>";
+        echo "Numero alumnos:" .$resultadopersonas->NumeroParticipantes."<br>";
         
         //Sentencia sql
         $edadmedia= "select avg(timestampdiff(YEAR,fechanac,curdate())) as EdadMedia from Encuesta;";
