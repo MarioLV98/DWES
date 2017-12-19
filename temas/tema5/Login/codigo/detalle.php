@@ -5,12 +5,11 @@ session_start();
 if(!empty($_SESSION['usuario'])){
     
 
-if(isset($_POST['salir'])){
-    session_destroy();
-    header('Location:login.php');
+if(isset($_POST['volver'])){
+    header('Location:progrma.php');
 }
 
-echo "<h1>Bienvenido ".$_SESSION['usuario']."</h1>";
+echo "<h1>Bienvenido ".$_SESSION['usuario']."La ultima conexion fue".$_COOKIE['fecha_ultima_conexion'].";</h1>";
 echo "<h1>SERVER</h1><br>";
 //Mostramos $_SERVER[]
 foreach ($_SERVER as $clave=>$valor){
@@ -48,7 +47,21 @@ if(empty($_COOKIE['fecha_ultima_conexion'])){
 }
 
  //Si se pulsa volver nos lleva programa.php
-echo "<button><a href='programa.php'>Volver</a></button>"
+
 
 ?>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Detalle</title>
+        <link rel="stylesheet" type="text/css" href="../estilos/estilos.css">
+    </head>
+    <body>
+        <form id="formulario" name="salir" action="<?PHP echo $_SERVER['PHP_SELF']; ?>" method="post">
+            <input type="submit" name="salir" value="Volver"/>
+           
+        </form>
+    </body>
+    
+</html>    
 

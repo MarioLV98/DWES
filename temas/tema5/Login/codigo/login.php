@@ -2,7 +2,7 @@
 <?php
 //Autor: Mario Labra Villar
 //Ultima modificación: 13/12/2017 
-include '../configuracion.php';
+include '../../configuracion.php';
 include "../libreria/LibreriaValidacionFormulariosjc.php";
 $error = false;
 $arrayErrores = array(" ", "No ha introducido ningun valor<br />", "El valor introducido no es valido<br />", "Tamaño minimo no valido<br />", "Tamaño maximo no valido<br />", "El registro ya existe<br />", "El usuario no existe<br />", "Contraseña incorrecta<br />"); //array en el que se almacenan los diferentes tipos de errores que puede dar dependiendo del valor que devuelva la libreria al validar
@@ -25,7 +25,7 @@ $erroresCampos = array(//En este array se almacenan los posibles errores que pue
     'contrasena' => ''
 );
 if (isset($_POST['cancelar'])) {
-    header('Location:../indextema5.html');
+    header('Location:../../indextema5.html');
 }
 if (filter_has_var(INPUT_POST, 'enviar')) { //SI SE PULSA EL BOTON DE ENVIAR SE REALIZARAN LAS VALIDACIONES
     $valida = validarCadenaAlfanumerica($_POST['usuario'], 1, 50);
@@ -105,7 +105,11 @@ if (!filter_has_var(INPUT_POST, 'enviar') || $error) {
     if ($correcto) {
         session_start();
         $_SESSION['usuario'] = $cuestionario['usuario'];
+        if($_SESSION['usuario']=="administrador"){
+             header('Location:administracion.php');
+        }else{
         header('Location:programa.php');
+        }
     }
 }
 ?>
@@ -114,7 +118,7 @@ if (!filter_has_var(INPUT_POST, 'enviar') || $error) {
     <head>
         <meta charset="UTF-8">
         <title>Login</title>
-        <link rel="stylesheet" type="text/css" href="../estilos.css">
+        <link rel="stylesheet" type="text/css" href="../../estilos.css">
     </head>
     <body>
 
@@ -138,9 +142,9 @@ if (!filter_has_var(INPUT_POST, 'enviar') || $error) {
                 </div>
         </form>
         
-        <img src="imagenes/modeloDeDatos.PNG" alt="Funcionamiento"/>
-        <img src="imagenes/almacenamiento2.PNG" alt="Almacenamiento"/>
-        <img src="imagenes/programaModelo.PNG" alt=""/>
+        <img src="../imagenes/modeloDeDatos.PNG" alt="Funcionamiento"/>
+        <img src="../imagenes/almacenamiento2.PNG" alt="Almacenamiento"/>
+        <img src="../imagenes/programaModelo.PNG" alt=""/>
         <footer>
 
         </footer>

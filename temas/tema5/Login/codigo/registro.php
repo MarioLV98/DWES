@@ -2,7 +2,7 @@
 <?php
 //Autor: Mario Labra Villar
 //Ultima modificación: 1/12/2017 
-include '../configuracion.php';
+include '../../configuracion.php';
 include "../libreria/LibreriaValidacionFormulariosjc.php";
 $error = false;
 $arrayErrores = array(" ", "No ha introducido ningun valor<br />", "El valor introducido no es valido<br />", "Tamaño minimo no valido<br />", "Tamaño maximo no valido<br />", "El registro ya existe<br />", "El usuario no existe<br />", "Contraseña incorrecta<br />", "El usuario ya existe<br />"); //array en el que se almacenan los diferentes tipos de errores que puede dar dependiendo del valor que devuelva la libreria al validar
@@ -97,7 +97,7 @@ if (!filter_has_var(INPUT_POST, 'enviar') || $error) {
     <head>
         <meta charset="UTF-8">
         <title>Login</title>
-        <link rel="stylesheet" type="text/css" href="../estilos.css">
+        <link rel="stylesheet" type="text/css" href="../../estilos.css">
     </head>
     <body>
 

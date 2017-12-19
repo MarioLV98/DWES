@@ -27,16 +27,16 @@
         $arrayErrores = array(" ", "No ha introducido ningun valor<br />", "El valor introducido no es valido<br />", "Tamaño minimo no valido<br />", "Tamaño maximo no valido<br />");
         $error = false;
         $valida = 0;
-        $DescDepartamento = "";
-        $ErrorDepartamento = "";
+        $nombreuser = "";
+        $erroruser = "";
         //SI SE PULSA EL BOTON ENVIAR SE REALIZARA LA VALIDACION DE LOS DATOS INRODUCIDOS
         if (filter_has_var(INPUT_POST, 'filtrar')) {
             $valida = validarCadenaAlfanumerica($_POST['DescDepartamento'], 1, 15);
             if ($valida != 0) {
-                $ErrorDepartamento = $arrayErrores[$valida];
+                $erroruser = $arrayErrores[$valida];
                 $error = true;
             } else {
-                $DescDepartamento = $_POST['DescDepartamento'];
+                $nombreuser = $_POST['DescDepartamento'];
             }
         }
         //SI NO SE HA PULSADO ENVIAR O SI HAY UN ERROR NOS MUESTRA EL FORMULARIO
@@ -46,8 +46,8 @@
             <form action="<?PHP echo $_SERVER['PHP_SELF']; ?>" method="post">
                  <h2>Buscar</h2>
                 <label for="DescDepartamento">Descripcion:</label><br />
-                <input type="text" name="DescDepartamento" value="<?php echo $DescDepartamento ?>"<br />
-                <?PHP echo $ErrorDepartamento ?>
+                <input type="text" name="DescDepartamento" value="<?php echo $nombreuser ?>"<br />
+                <?PHP echo $erroruser ?>
                 <input id="boton" type="submit" name="filtrar" value="Buscar">
 
             </form>
@@ -64,7 +64,7 @@
                 //Preparamos la consulta
                 $sql = $conexion->prepare($orden);
                 //Pasamos los parametros al query
-                $sql->bindParam(":DescDepartamento", $DescDepartamento);
+                $sql->bindParam(":DescDepartamento", $nombreuser);
                 //Ejecutamos la orden sql
                 $sql->execute();
                 //Mostramos datos mientras los hacha con el Fetch

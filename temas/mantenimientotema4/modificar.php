@@ -25,12 +25,12 @@ try {
 
 
 
-        $CodDepartamentoBuscar = $_GET['CodDepartamento'];
+        $codUsuarioBuscar = $_GET['CodDepartamento'];
         $consulta = "SELECT * FROM Departamento WHERE CodDepartamento = :CodDepartamento";
         //Preparamos la sentencia
         $sentencia = $conexion->prepare($consulta);
         //Inyectamos los parametros  en el query
-        $sentencia->bindParam(":CodDepartamento", $CodDepartamentoBuscar);
+        $sentencia->bindParam(":CodDepartamento", $codUsuarioBuscar);
         //La ejecutamos
         $sentencia->execute();
         if ($sentencia->rowCount() == 1) {
@@ -46,7 +46,7 @@ try {
                     <title>Mantenimiento</title>
                 </head>
                 <body>
-                    <form action="<?PHP echo $_SERVER['PHP_SELF'] . "?CodDepartamento=$CodDepartamentoBuscar"; ?>" method="post">
+                    <form action="<?PHP echo $_SERVER['PHP_SELF'] . "?CodDepartamento=$codUsuarioBuscar"; ?>" method="post">
                              <h2>Modificar</h2>
                         <label for="CodDepartamento">Codigo Departamento:</label><br />
                         <input type="text" name="CodDepartamento" value="<?php echo $cuestionario->CodDepartamento; ?>" readonly><br /><br />

@@ -2,7 +2,7 @@
 <?php
 //Autor: Mario Labra Villar
 //Ultima modificación: 1/12/2017 
-include '../configuracion.php';
+include '../../configuracion.php';
 include "../libreria/LibreriaValidacionFormulariosjc.php";
 $error = false;
 $arrayErrores = array(" ", "No ha introducido ningun valor<br />", "El valor introducido no es valido<br />", "Tamaño minimo no valido<br />", "Tamaño maximo no valido<br />", "El registro ya existe<br />", "El usuario no existe<br />", "Contraseña incorrecta<br />", "El usuario ya existe<br />"); //array en el que se almacenan los diferentes tipos de errores que puede dar dependiendo del valor que devuelva la libreria al validar
@@ -90,15 +90,15 @@ if (!empty($_SESSION['usuario'])) {
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Login</title>
-        <link rel="stylesheet" type="text/css" href="../estilos.css">
+        <title>Cambiar contraseña</title>
+        <link rel="stylesheet" type="text/css" href="../../estilos.css">
     </head>
     <body>
 
         <form action="<?PHP echo $_SERVER['PHP_SELF']; ?>" id="formulario1" method="post">
 
             <div id="encuesta">
-                <h4>Login</h4>
+                <h4>Cambiar contraseña</h4>
                 <label for="usuario">Usuario:</label><br />
                 <input type="text" name="usuario" value="<?PHP echo $_SESSION['usuario']; ?>" readonly><br />
                 <p id="err"><?PHP echo $erroresCampos['usuario']; ?></p>
@@ -107,7 +107,7 @@ if (!empty($_SESSION['usuario'])) {
                 <input type="password" name="contrasena" value="<?PHP echo $cuestionario['contrasena']; ?>"><br />
                 <p id="err"><?PHP echo $erroresCampos['contrasena']; ?></p>
 
-                <input type="submit" name="enviar" value="Registro"/>
+                <input type="submit" name="enviar" value="Cambiar contraseña"/>
                 <input type="submit" name="cancelar" value="Cancelar"/>
 
 
