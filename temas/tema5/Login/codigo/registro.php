@@ -104,7 +104,7 @@ if (!filter_has_var(INPUT_POST, 'enviar') || $error) {
         <form action="<?PHP echo $_SERVER['PHP_SELF']; ?>" id="formulario1" method="post">
 
             <div id="encuesta">
-                <h4>Login</h4>
+                <h4>Registro</h4>
                 <label for="usuario">Usuario:</label><br />
                 <input type="text" name="usuario" value="<?PHP echo $cuestionario['usuario']; ?>"><br />
                 <p id="err"><?PHP echo $erroresCampos['usuario']; ?></p>

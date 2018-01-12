@@ -9,6 +9,8 @@ $valida = 0;
 $correcto = false;
 
 session_start();
+ $userName = $_GET['usuario'];
+ echo "Usuario pasado".$userName;
 if (!empty($_SESSION['usuario'])) {
     try {
         $conexion = new PDO($datosConexion, $usuario, $contraseña);
@@ -21,6 +23,8 @@ if (!empty($_SESSION['usuario'])) {
         'usuario' => '',
         'contrasena' => ''
     );
+    
+    $cuestionario['usuario']=$userName;
     $erroresCampos = array(//En este array se almacenan los posibles errores que puedan tener cada uno de los campos
         'usuario' => '',
         'contrasena' => ''
@@ -35,7 +39,7 @@ if (!empty($_SESSION['usuario'])) {
             $erroresCampos['usuario'] = $arrayErrores[$valida];
             $error = true;
         } else {
-            $cuestionario['usuario'] = $_POST['usuario'];
+            $cuestionario['usuario'] = $userName;
         }
         $valida = validarCadenaAlfanumerica($_POST['contrasena'], 1, 20);
         if ($valida != 0) {
@@ -52,7 +56,7 @@ if (!empty($_SESSION['usuario'])) {
         <?php
         //EN EL CASO EN EL QUE TODO HAYA IDO BIEN REALIZAMOS LAS MODIFICACIONES PERTINENTES EN EL USUARIO
     } else {
-         $userName = $_GET['usuario'];
+        
         $consulta = "update Usuarios set contrasena=:pw where usuario=:user ";
         //Preparamos la sentencia
         $sentencia = $conexion->prepare($consulta);
@@ -63,10 +67,8 @@ if (!empty($_SESSION['usuario'])) {
 
         //Ejecutamos la consulta
         try {
-            $sentencia->execute();
-            if ($sentencia->rowCount() != 0) {
-                
-                 $cuestionario = $sentencia->fetch(PDO::FETCH_OBJ);
+            if($sentencia->execute()){
+           header('Location:administracion.php');
             }
         } catch (PDOException $PdoE) {
             echo $PdoE->getMessage() . "<br>";
@@ -91,12 +93,12 @@ if (!empty($_SESSION['usuario'])) {
     </head>
     <body>
 
-        <form action="<?PHP echo $_SERVER['PHP_SELF'];  "?usuario=$userName"; ?>" id="formulario1" method="post">
+        <form action="<?PHP echo $_SERVER['PHP_SELF'] . "?usuario=$userName"; ?>" id="formulario1" method="post">
 
             <div id="encuesta">
                 <h4>Cambiar contraseña</h4>
                 <label for="usuario">Usuario:</label><br />
-                <input type="text" name="usuario" value="<?PHP echo $cuestionario->usuario ?>" readonly><br />
+                <input type="text" name="usuario" value="<?PHP echo $cuestionario['usuario'] ?>" readonly><br />
                 <p id="err"><?PHP echo $erroresCampos['usuario']; ?></p>
 
                 <label for="contrasena">Contraseña:</label><br />

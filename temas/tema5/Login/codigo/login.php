@@ -134,7 +134,7 @@ if (!filter_has_var(INPUT_POST, 'enviar') || $error) {
                 <input type="password" name="contrasena" value="<?PHP echo $cuestionario['contrasena']; ?>"><br />
                 <p id="err"><?PHP echo $erroresCampos['contrasena']; ?></p>
 
-                <input type="submit" name="enviar" value="Enviar"/>
+                <input type="submit" name="enviar" value="Iniciar sesion"/>
                 <input type="submit" name="cancelar" value="Cancelar"/>
 
                 <p>No tienes cuenta?<a href="registro.php">Registrate</a></p>

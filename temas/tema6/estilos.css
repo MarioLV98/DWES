@@ -1,0 +1,69 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 12-nov-2017, 16:42:16
+    Author     : Mario
+*/
+
+body {
+    background-color: cornflowerblue;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+div{
+    font-family: Helvetica, Arial, sans-serif;
+    margin: 0 auto;    
+}
+
+#boton{
+    text-decoration: none;
+    padding: 5px;
+    font-weight: 600;
+    font-size: 20px;
+    
+}
+
+#formulario1{
+    background-color: aquamarine;
+    border-radius: 5px;
+    margin: 0 auto;
+    width: 30%;
+    text-align: center;
+}
+
+
+#err{
+    color: red;
+}
+
+table {  
+    color: #333; 
+    font-family: Helvetica, Arial, sans-serif; 
+    width: 640px; 
+    border-collapse: collapse;
+    margin: 0 auto;  
+}
+td, th {
+    border: 1px solid transparent; 
+    height: 30px; 
+}
+th { background: #D3D3D3; 
+     font-weight: bold; 
+}
+td { background: #FAFAFA;
+     text-align: center; 
+}
+tr:nth-child(even) 
+td { 
+    background: #F1F1F1; 
+}  
+tr:nth-child(odd)
+td {
+    background: #FEFEFE; 
+} 
+tr td:hover {
+    background: #666; color: #FFF; 
+}
