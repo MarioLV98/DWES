@@ -1,0 +1,88 @@
+body{
+    background-color: aliceblue;
+    margin: 0 auto;
+    font-family: sans-serif;
+}
+
+header{
+    top:0px;
+    position: fixed;
+    width: 100%;
+    background-color:lightgreen;
+    opacity: 0.9;
+    height: 5%;
+}
+ul{
+    margin-top: 0;
+    margin-right: 10px;
+}
+ul>li{
+    display: inline-block;
+    transition: all 0.7s ease;
+}
+
+form{
+    margin: 0 auto;
+    margin-top: 5%;
+    margin-left: 40%;
+}
+
+li:hover{
+    background-color: aliceblue;
+    
+}
+
+a{
+    text-decoration: none;
+   
+}
+
+main{
+    background-color: lightgreen;
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 10%;
+    height: 70%;
+}
+
+#salir{
+    float: right;
+}
+
+
+footer{
+    position: fixed;
+    bottom: 0px;
+    background-color: lightgreen;
+    width: 100%;
+    text-align: center;
+    opacity: 0.9;
+}
+
+footer>h4{
+    -webkit-transition: all 0.7s ease;
+    -moz-transition: all 0.7s ease;
+    -ms-transition: all 0.7s ease;
+    -o-transition: all 0.7s ease;
+    transition: all 0.7s ease;
+}
+
+footer>h4:hover{
+   -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+}
+
+#repositorio1{
+    float:right;
+    width: 150px;
+    
+}
+
+#repositorio2{
+    float:left;
+    width: 150px;
+    
+}
