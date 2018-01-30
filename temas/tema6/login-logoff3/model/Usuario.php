@@ -1,6 +1,15 @@
 <?php
-
+/**
+ * Usuario.php
+ * 
+ * Usuario.php
+ * 
+ */
 require_once 'UsuarioPDO.php';
+
+/**
+ * Clase Usuario
+ */
 
 class Usuario{
     
@@ -11,6 +20,21 @@ class Usuario{
     private $ultimaConexion;
     private $contadorAccesos;
     
+    /**
+     * Constructor
+     * 
+     * Ultima revision 19/01/2018
+     * Constructor al que se le pasan los 
+     * 
+     * @author Mario Labra Villar
+     * @param string $codUsuario codigo de usuario
+     * @param string $descUsuario descripcion de usuario
+     * @param password $password    contraseña
+     * @param string $perfil    descripcion del perfil
+     * @param date $ultimaConexion  fecha de ultima conexion
+     * @param integer $contadorAccesos  numero de accesos
+     */
+    
     function __construct($codUsuario, $descUsuario, $password, $perfil, $ultimaConexion, $contadorAccesos) {
         $this->codUsuario = $codUsuario;
         $this->descUsuario = $descUsuario;
@@ -20,10 +44,14 @@ class Usuario{
         $this->contadorAccesos = $contadorAccesos;
     }
     /**
+     * Validar usuario
+     * 
+     * Ultima revision 19/01/2018
      * Esta funcion sirve para validar el usuario
      * 
+     * @author Mario Labra Villar
      * @param string $codUsuario Codigo o nombre de usuario que introducimos en el formulario
-     * @param string $password CContraseña que introducimos en el formulario
+     * @param string $password Contraseña que introducimos en el formulario
      * @return \Usuario Objeto usuario con la informacion del msmo
      */
     
@@ -41,26 +69,112 @@ class Usuario{
         return $usuario;
         
     }
+    
+    /**
+     * Registrar Usuario
+     * 
+     * Ultima revision 19/01/2018
+     * Esta funcion sirve para registrar un usuario
+     * 
+     * 
+     * @param type $codUsuario codigo de usuario
+     * @param type $password contraseña
+     * @return type boolean
+     */
+    
+     public static function registrarUsuario($codUsuario, $password){
+        
+         return  UsuarioPDO::registrarUsuario($codUsuario, $password);
+    }
+    
+    
+    public static function modificiarUsuario($codUsuario, $password){
+        return UsuarioPDO::modificarUsuario($codUsuario, $password);
+    }
+    
+    public static function borrarUsuario($codUsuario){
+        return UsuarioPDO::borrarUsuario($codUsuario);
+    }
+
+
+
+
+
+
+    /**
+     * Codigo
+     * 
+     * Ultima revision 19/01/2018
+     * Devuelve el codigo del usuario
+     * 
+     * @author Mario Labra Villar
+     * @return string $codUsuario Cadena con el codigo del usuario
+     */
             
     function getCodUsuario() {
         return $this->codUsuario;
     }
-
+  /**
+   * Descripcion
+   * 
+   * Ultima revision 19/01/2018
+   * Devuelve la descripcion del usuario
+   *    
+   * @author Mario Labra Villar
+   * @return string  $getDescUsuario Cadena con la descripcion del usuario
+   */
     function getDescUsuario() {
         return $this->descUsuario;
     }
-
+     /**
+     * Contraseña
+     * 
+     * Ultima revision 19/01/2018
+     * Devuelve la contraseña
+     * 
+     * @author Mario Labra Villar
+     * @return string $password Cadena con la contraseña
+     */
     function getPassword() {
         return $this->password;
     }
-
+    
+   /**
+     * Perfil
+     * 
+     * Ultima revision 19/01/2018
+     * Devuelve el pefil
+     * 
+     * @author Mario Labra Villar
+     * @return string $perfil Cadena con el perfil del usuario
+     */
     function getPerfil() {
         return $this->perfil;
     }
+    
+     /**
+      * Ultima conexion
+      * 
+      * @author Mario Labra Villar
+      * Ultima revision 19/01/2018
+      * 
+      * Devuelve la ultima conexion de un usuario
+      * @return date $utlimaConexion Ultima fecha de conexion
+      */
 
     function getUltimaConexion() {
         return $this->ultimaConexion;
     }
+    
+     /**
+     * Contador de accesos
+     *  
+     * Ultima revision 19/01/2018
+     * Devuelve el numero de accesos del usuario
+     * 
+     * @author Mario Labra Villar
+     * @return integer $contadorAccesos Numero de accesos del usuario
+     */
 
     function getContadorAccesos() {
         return $this->contadorAccesos;

@@ -5,6 +5,9 @@ require_once  'model/Usuario.php';
 if(isset($_SESSION['usuario'])){//Si hay sesion te lleva al index
     header("Location:index.php?location=inicio");
 }else{ //Si no hay sesion se realiza la validacion de usuario
+    if(isset($_POST['registro'])){
+        header('Location:index.php?location=registro');
+    }
     $loginOK=false; //Sirve para comprobar que el usuario es correcto o no
     if(isset($_POST['enviar']) && isset($_POST['usuario']) && isset($_POST['contrasena'])){
         
@@ -12,7 +15,7 @@ if(isset($_SESSION['usuario'])){//Si hay sesion te lleva al index
        
         if(is_null($usu)){ //Si no es correcto se muestra este mensaje
           
-           $errores['errorPassword']="<p style='text-align: center;margin-bottom: 10px;' class='error required_info'>Usuario o contraseña no válidos<p>"; 
+           $errores['errorPassword']="<p style='color:red;'>Usuario o contraseña no válidos<p>"; 
         }else{ //Si se devuelve el usuario loginOk se pone true
             $loginOK=true;
         }

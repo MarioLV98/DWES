@@ -1,13 +1,30 @@
 <?php
-
+/**
+ * UsuarioPDO
+ */
 
 include 'DBPDO.php';
 include 'UsuarioBD.php';
+
+/**
+ * Usuario PDO
+ */
 
 class UsuarioPDO implements UsuarioBD{
     
     
     //Esta funcion es la que se encarga de comprobar que el usuario introducido es correcto
+    /**
+     * Funcion Validar usuario
+     * 
+     * Ultima revision 19/01/2018
+     * Se crea la consulta y se le añaden los parametros que la clase DBPDO va a ejecutar
+     * 
+     * @author Mario Labra Villar
+     * @param string $codUsuario Codigo de usuario
+     * @param string $password  Contraseña
+     * @return array $arrayUsuario Array con los datos del usuario
+     */
     public static function validarUsuario($codUsuario, $password) {
         
         $arrayUsuario=[];
@@ -27,6 +44,59 @@ class UsuarioPDO implements UsuarioBD{
         //Devuelve el array con los datos del usuario
         return $arrayUsuario;
         
+    }
+    
+    /**
+     * Funcion registrar usuario
+     * 
+     * Ultima revision 19/01/2018
+     * Se crea la consulta y se le añaden los parametros que la clase DBPDO va a ejecutar
+     * 
+     * @param type $codUsuario codigo de usuario
+     * @param type $password    contraseña
+     * @return boolean  $registroOk combrueba si es correcto o no
+     */
+    public static function registrarUsuario($codUsuario, $password) {
+        
+        $registroOk=true;
+        $consulta="insert into Usuarios (codUsuario,password) values ('$codUsuario','$password')";
+        $resultado= DBPDO::ejecutarConsulta($consulta, [$codUsuario,$password]);
+        
+        //Comprueba que el usuario existe
+        if($resultado->rowCount()!=1){
+           
+            $registroOk=false;
+        }
+        
+        //Devuelve el array con los datos del usuario
+        return $registroOk;
+        
+    }
+    
+    public static function modificarUsuario($codUsuario,$password){
+        
+        $modificacionOk=true;
+        $consulta="update Usuarios set password='$password' where codUsuario='$codUsuario'";
+        $resultado= DBPDO::ejecutarConsulta($consulta, [$codUsuario,$password]);
+        
+        if($resultado->rowCount()!=1){
+            $modificacionOk=false;
+        }
+        
+        return $modificacionOk;
+    }
+    
+    public static function borrarUsuario($codUsuario){
+        
+        $borradoOk=true;
+        $consulta="delete from Usuarios where codUsuario='$codUsuario'";
+        $resultado= DBPDO::ejecutarConsulta($consulta, [$codUsuario]);
+        
+        if($resultado->rowCount()!=1){
+            $borradoOk=false;
+        }
+        
+        return $borradoOk;
     }
 
     

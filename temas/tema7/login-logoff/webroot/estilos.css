@@ -1,0 +1,101 @@
+header{
+    background-color: lightgreen;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+#contenido{
+    
+    margin-top: 10%;
+}
+
+#repositorio1{
+    float:right;  
+}
+
+#err{
+    color:red;
+}
+
+#repositorio2{
+    float:left;
+    
+}
+
+aside{
+    background-color: aliceblue;
+}
+
+div>img{
+   -webkit-transition: all 0.7s ease;
+    -moz-transition: all 0.7s ease;
+    -ms-transition: all 0.7s ease;
+    -o-transition: all 0.7s ease;
+    transition: all 0.7s ease;  
+}
+
+div>img:hover{
+    webkit-transform:scale(1.5);
+    -moz-transform:scale(1.5);
+    -ms-transform:scale(1.5);
+    -o-transform:scale(1.5);
+    transform:scale(1.5); 
+}
+
+
+#salir{
+    float: right;
+    margin-top: -3%;
+}
+
+footer{
+    background-color: lightgreen;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+li:hover{
+    background-color: aliceblue;
+    
+}
+
+footer>h4{
+    margin: 0 auto;
+    width: 7%;
+    -webkit-transition: all 0.7s ease;
+    -moz-transition: all 0.7s ease;
+    -ms-transition: all 0.7s ease;
+    -o-transition: all 0.7s ease;
+    transition: all 0.7s ease;
+}
+
+footer>h4:hover{
+   -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+}
+
+ul>li{
+    display: inline-block;
+    transition: all 0.7s ease;
+}
+
+main{
+    background-color: lightgreen;
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 10%;
+    height: 70%;
+}
+
+article{
+    background-color: cadetblue;
+}
+
+form{
+    margin: 0 auto;
+}

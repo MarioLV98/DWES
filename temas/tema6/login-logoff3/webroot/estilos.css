@@ -10,7 +10,7 @@ header{
     width: 100%;
     background-color:lightgreen;
     opacity: 0.9;
-    height: 5%;
+    height: 7%;
 }
 ul{
     margin-top: 0;
@@ -30,6 +30,10 @@ form{
 li:hover{
     background-color: aliceblue;
     
+}
+
+#err{
+    color:red;
 }
 
 a{
@@ -85,4 +89,13 @@ footer>h4:hover{
     float:left;
     width: 150px;
     
+}
+
+#imagenes{
+    width: 100%;
+}
+
+#imagenes>img{
+    height: 400px;
+    width: 400px;
 }

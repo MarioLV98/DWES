@@ -20,8 +20,13 @@ if (isset($_SESSION['usuario'])) {
  
  
 } else {
-    $_GET['location'] = 'login';
+    if (isset($_GET['location'])  && isset($controladores[$_GET['location']])) {
+     $controlador = $controladores[$_GET['location']];     
+
+     }else{
+            $_GET['location'] = 'login';
     $controlador = $controladores[$_GET['location']];
+     }
    
 }
 
