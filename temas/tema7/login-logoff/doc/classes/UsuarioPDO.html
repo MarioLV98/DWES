@@ -106,12 +106,12 @@
                         <ul class="dropdown-menu">
                             <li>
                                 <a href="../reports/errors.html">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">50</span>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">0</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="../reports/markers.html">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">0</span>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">0</span>
                                 </a>
                             </li>
                             <li>
@@ -136,19 +136,22 @@
                                 <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-127383833"></a>
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-1464132005"></a>
                                 <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
             </div>
-            <div id="namespace-127383833" class="accordion-body collapse in">
+            <div id="namespace-1464132005" class="accordion-body collapse in">
                 <div class="accordion-inner">
 
                     
                     <ul>
                                                     <li class="interface"><a href="../classes/UsuarioBD.html">UsuarioBD</a></li>
                                                                                                     <li class="class"><a href="../classes/DBPDO.html">DBPDO</a></li>
+                                                    <li class="class"><a href="../classes/Departamento.html">Departamento</a></li>
+                                                    <li class="class"><a href="../classes/DepartamentoPDO.html">DepartamentoPDO</a></li>
+                                                    <li class="class"><a href="../classes/Rest.html">Rest</a></li>
+                                                    <li class="class"><a href="../classes/Soap.html">Soap</a></li>
                                                     <li class="class"><a href="../classes/Usuario.html">Usuario</a></li>
                                                     <li class="class"><a href="../classes/UsuarioPDO.html">UsuarioPDO</a></li>
-                                                    <li class="class"><a href="../classes/Validacion.html">Validacion</a></li>
                                             </ul>
                 </div>
             </div>
@@ -167,8 +170,8 @@
                     <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal"><i class="icon-code"></i></a>
 
                     <h1><small>\</small>UsuarioPDO</h1>
-                    <p><em>Usuario PDO</em></p>
-                    
+                    <p><em>Clase UsuarioPDO</em></p>
+                    <p>Clase para crear usuarios</p>
                     
                                         
                     <section id="summary">
@@ -188,6 +191,13 @@
                             <section class="span4">
                                                                     <a href="../classes/UsuarioPDO.html#method_validarUsuario" class="">validarUsuario()</a><br />
                                                                     <a href="../classes/UsuarioPDO.html#method_registrarUsuario" class="">registrarUsuario()</a><br />
+                                                                    <a href="../classes/UsuarioPDO.html#method_modificarUsuario" class="">modificarUsuario()</a><br />
+                                                                    <a href="../classes/UsuarioPDO.html#method_borrarUsuario" class="">borrarUsuario()</a><br />
+                                                                    <a href="../classes/UsuarioPDO.html#method_actualizarAccesos" class="">actualizarAccesos()</a><br />
+                                                                    <a href="../classes/UsuarioPDO.html#method_actualizarFechaAcceso" class="">actualizarFechaAcceso()</a><br />
+                                                                    <a href="../classes/UsuarioPDO.html#method_comprobarUsuario" class="">comprobarUsuario()</a><br />
+                                                                    <a href="../classes/UsuarioPDO.html#method_comprobarPassword" class="">comprobarPassword()</a><br />
+                                                                    <a href="../classes/UsuarioPDO.html#method_comprobarYaExistente" class="">comprobarYaExistente()</a><br />
                                                             </section>
                             <section class="span4">
                                                                     <em>No public properties found</em>
@@ -227,7 +237,7 @@
                         <dt>File</dt>
                             <dd><a href="../files/UsuarioPDO.html"><div class="path-wrapper">UsuarioPDO.php</div></a></dd>
                                                 <dt>Package</dt>
-                            <dd><div class="namespace-wrapper">Default</div></dd>
+                            <dd><div class="namespace-wrapper">modelo</div></dd>
                                                 <dt>Class hierarchy</dt>
                             <dd class="hierarchy">
                                                                                                                                                                     <div class="namespace-wrapper">\UsuarioPDO</div>
@@ -242,7 +252,14 @@
                                                                         </dl>
                     <h2>Tags</h2>
                     <table class="table table-condensed">
-                                            <tr><td colspan="2"><em>None found</em></td></tr>
+                                            <tr>
+                            <th>
+                                author
+                            </th>
+                            <td>
+                                                                    <p>Mario Labra Villar</p>
+                                                            </td>
+                        </tr>
                                         </table>
                 </aside>
             </div>
@@ -312,7 +329,7 @@ Se crea la consulta y se le añaden los parametros que la clase DBPDO va a ejecu
             <article class="method">
                 <h3 class="public ">registrarUsuario()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">registrarUsuario(\type  <span class="argument">$codUsuario</span>, \type  <span class="argument">$password</span>) : boolean</pre>
+                <pre class="signature" style="margin-right: 54px;">registrarUsuario(  <span class="argument">$codUsuario</span>,   <span class="argument">$password</span>,   <span class="argument">$desc</span>,   <span class="argument">$perf</span>) : \$registroOk</pre>
                 <p><em>Funcion registrar usuario</em></p>
                 <p>Ultima revision 19/01/2018
 Se crea la consulta y se le añaden los parametros que la clase DBPDO va a ejecutar</p>
@@ -320,21 +337,320 @@ Se crea la consulta y se le añaden los parametros que la clase DBPDO va a ejecu
                                     <h4>Parameters</h4>
                     <table class="table table-condensed table-hover">
                                                     <tr>
-                                <td>\type</td>
+                                <td></td>
                                 <td>$codUsuario </td>
                                 <td><p>codigo de usuario</p></td>
                             </tr>
                                                     <tr>
-                                <td>\type</td>
+                                <td></td>
                                 <td>$password </td>
                                 <td><p>contraseña</p></td>
+                            </tr>
+                                                    <tr>
+                                <td></td>
+                                <td>$desc </td>
+                                <td><p>descricion</p></td>
+                            </tr>
+                                                    <tr>
+                                <td></td>
+                                <td>$perf </td>
+                                <td><p>perfil</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    \$registroOk
+                                            &mdash; <p>combrueba si es correcto o no</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_modificarUsuario" name="method_modificarUsuario" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">modificarUsuario()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">modificarUsuario(  <span class="argument">$codUsuario</span>,   <span class="argument">$password</span>,   <span class="argument">$desc</span>,   <span class="argument">$perf</span>) : boolean</pre>
+                <p><em>Funcion modificar usuario</em></p>
+                <p>Ultima revision 30/01/2018
+Se crea la consulta y se le añaden los parametros que la clase DBPDO va a ejecutar</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$codUsuario </td>
+                                <td><p>codigo de usuario</p></td>
+                            </tr>
+                                                    <tr>
+                                <td></td>
+                                <td>$password </td>
+                                <td><p>contraseña</p></td>
+                            </tr>
+                                                    <tr>
+                                <td></td>
+                                <td>$desc </td>
+                                <td><p>descripcion de usuario</p></td>
+                            </tr>
+                                                    <tr>
+                                <td></td>
+                                <td>$perf </td>
+                                <td><p>perfil de usuario</p></td>
                             </tr>
                                             </table>
                 
                 
                                     <h4>Returns</h4>
                     boolean
-                                            &mdash; <p>$registroOk combrueba si es correcto o no</p>
+                                            &mdash; <p>$modificacionOk comprueba si es correcto o no</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_borrarUsuario" name="method_borrarUsuario" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">borrarUsuario()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">borrarUsuario(  <span class="argument">$codUsuario</span>) : \$borradoOk</pre>
+                <p><em>Funcion borrar usuario</em></p>
+                <p>Ultima revision 30/01/2018
+Se crea la consulta y se le añaden los parametros que la clase DBPDO va a ejecutar</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$codUsuario </td>
+                                <td><p>codigo de usuario</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    \$borradoOk
+                                            &mdash; <p>comprueba si se ha borrado o no</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_actualizarAccesos" name="method_actualizarAccesos" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">actualizarAccesos()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">actualizarAccesos(  <span class="argument">$codUsuario</span>) </pre>
+                <p><em>Funcion para actualizar accesos</em></p>
+                <p>Ultima revision 30/01/2018
+Se crea la consulta y se le añaden los parametros que la clase DBPDO va a ejecutar
+Sirve para contar el numero de visitas de cada usuario</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$codUsuario </td>
+                                <td><p>codigo de usuario que le pasamos</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_actualizarFechaAcceso" name="method_actualizarFechaAcceso" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">actualizarFechaAcceso()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">actualizarFechaAcceso(  <span class="argument">$codUsuario</span>) </pre>
+                <p><em>Funcion para actualizar la fecha de acceso</em></p>
+                <p>Ultima revision 30/01/2018
+Se crea la consulta y se le añaden los parametros que la clase DBPDO va a ejecutar
+Sirve para saber la fecha de la ultima conexion</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$codUsuario </td>
+                                <td><p>codigo de usuario que le pasamos</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_comprobarUsuario" name="method_comprobarUsuario" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">comprobarUsuario()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">comprobarUsuario(  <span class="argument">$valor</span>) : \con</pre>
+                <p><em>Funcion para comprobar que un usuario existe</em></p>
+                <p>Ultima revision 30/01/2018
+Se crea la consulta y se le añaden los parametros que la clase DBPDO va a ejecutar</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$valor </td>
+                                <td><p>codigo del usuario</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    \con
+                                            &mdash; <p>el resultado de la validacion</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_comprobarPassword" name="method_comprobarPassword" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">comprobarPassword()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">comprobarPassword(  <span class="argument">$user</span>,   <span class="argument">$pass</span>) : \con</pre>
+                <p><em>Funcion para comprobar que la contraseña es correcta</em></p>
+                <p>Ultima revision 30/01/2018
+Se crea la consulta y se le añaden los parametros que la clase DBPDO va a ejecutar</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$user </td>
+                                <td><p>usuario</p></td>
+                            </tr>
+                                                    <tr>
+                                <td></td>
+                                <td>$pass </td>
+                                <td><p>contraseña</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    \con
+                                            &mdash; <p>el resultado de la validacion</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_comprobarYaExistente" name="method_comprobarYaExistente" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">comprobarYaExistente()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">comprobarYaExistente(  <span class="argument">$valor</span>) : string</pre>
+                <p><em>Funcion para comprobar que un suasrio que ya existe</em></p>
+                <p>Ultima revision 30/01/2018
+Se crea la consulta y se le añaden los parametros que la clase DBPDO va a ejecutar</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$valor </td>
+                                <td><p>codigo del usuario</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>con el resultado de la validacion</p>
                                     				
                             </article>
         </div>
@@ -399,7 +715,7 @@ Se crea la consulta y se le añaden los parametros que la clase DBPDO va a ejecu
                 <section class="span10 offset1">
                     <hr />
                     Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
-                    on January 23rd, 2018 at 10:31.
+                    on February 5th, 2018 at 08:45.
                 </section>
             </section>
         </section>

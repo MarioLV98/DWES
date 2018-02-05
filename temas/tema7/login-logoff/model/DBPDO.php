@@ -2,12 +2,10 @@
 /**
  * Fichero DBPDO.php
  * 
+ * Ejecucion consultas
  * 
- * Sumario fichero prueba
- * Ultima revision 22/1/2018
- * 
- * @author Mario Labra Villar
- */ 
+ * @package modelo
+ */
 
 require_once 'config/datosBD.php'; //Añadimos los datos necesarios para la conexion
 

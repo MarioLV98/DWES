@@ -1,16 +1,36 @@
 <?php
-/*
+/**
  * Fichero departamento.php
+ * 
+ * Creacion departamentos
+ * 
+ * @package modelo
  */
-require_once 'DepartamentoPDO.php';
 
-/*
+
+/**
  * Clase Departamento
+ * 
+ * Clase para crear departamentos
+ * 
+ * @author Mario Labra Villar
  */
 
 class Departamento {
+    
+    /**
+     * @var $codDepartamento    Codigo del departamento
+     */
     protected $codDepartamento;
+    
+    /**
+     * @var $altaDepartamento   Fecha de alta del departamento.
+     */
     protected $descDepartamento;
+    
+    /**
+     * @var $capacidad  Capacidad del departamento.
+     */
     protected $volumenNegocio;
     /**
      * Constructor
@@ -18,9 +38,9 @@ class Departamento {
      * @author Mario Labra Villar
      * Ultima revision 30/01/2018
      *
-     * @param type $codDepartamento codigo de departamento
-     * @param type $descDepartamento    descripcion de departamento
-     * @param type $volumenNegocio  volumen de negocio
+     * @param $codDepartamento codigo de departamento
+     * @param $descDepartamento    descripcion de departamento
+     * @param $volumenNegocio  volumen de negocio
      */
     function __construct($codDepartamento, $descDepartamento, $volumenNegocio) {
         $this->codDepartamento = $codDepartamento;
@@ -31,30 +51,56 @@ class Departamento {
     /**
      * getCodDepartamento
      * 
-     * author Mario Labra Villar
+     * @author Mario Labra Villar
      * Ultima revision 30/01/2018
      * 
      * Devuelve el codigo del departamento
-     * @return type boolean
+     * @return type string codigo de departamento
      */
     
     function getCodDepartamento() {
         return $this->codDepartamento;
     }
+    
+    /**
+     * getDescDepartamento
+     * 
+     * @author Mario Labra Villar
+     * Ultima revision 30/01/2018
+     * 
+     * Devuelve la descripcion del departamento
+     * @return type string descripcion de departamento
+     */
 
     function getDescDepartamento() {
         return $this->descDepartamento;
     }
-
+    /**
+     * getVolumenNegocio
+     * 
+     *  @author Mario Labra Villar
+     * Ultima revision 30/01/2018
+     * 
+     * Devuleve el volumen del negocio
+     * @return type int volumen de negocio
+     */
     function getVolumenNegocio() {
         return $this->volumenNegocio;
     }
+    
+    /**
+     * listar departamentos
+     * 
+     * @author Mario Labra Villar
+     * Ultima revision 30/01/2018
+     * 
+     * Devuelve un array con la lista de departamentos
+     * @return \Departamento array de departamentos
+     */
 
     public static function listarDepartamentos(){
       $departamentos=null;
         $departamento= DepartamentoPDO::listarDepartamentos();
-        print_r($departamento);
-        echo count($departamento);
         if(!empty($departamento)){
             
             for($i=0;$i<count($departamento);$i++){
@@ -65,18 +111,67 @@ class Departamento {
         return $departamentos;
     }
     
+    
+    /**
+     * cerarDepartamento
+     * 
+     *  @author Mario Labra Villar
+     * Ultima revision 30/01/2018
+     * 
+     * Funcion que llama a crear departamento
+     * @param  $codDepartamento codigo
+     * @param  $descDepartamento descripcion
+     * @param  $volumenNegocio volumen
+     * @return boolean
+     */
     public static function crearDepartamento($codDepartamento,$descDepartamento,$volumenNegocio){
         
         return DepartamentoPDO::crearDepartamento($codDepartamento, $descDepartamento, $volumenNegocio);
     }
     
+    /**
+     * modificarDepartamento
+     * 
+     *  @author Mario Labra Villar
+     * Ultima revision 30/01/2018
+     * 
+     * Llama a modificar depatamento
+     * @param $codDepartamento codigo
+     * @param $descDepartamento descripcion
+     * @param  $volumenNegocio volumen
+     * @return  boolean
+     */
     public static function modificarDepartamento($codDepartamento,$descDepartamento,$volumenNegocio){
         return DepartamentoPDO::modificarDepartamento($codDepartamento, $descDepartamento, $volumenNegocio);
     }
     
+    /**
+     * borrarDepartamento
+     * 
+     *  @author Mario Labra Villar
+     * Ultima revision 30/01/2018
+     * 
+     * Llama a borrar departamento
+     * @param  $codDepartamento codigo
+     * @return  boolean
+     */
+    
     public static function borrarDepartamento($codDepartamento){
         
         return DepartamentoPDO::borrarDepartamento($codDepartamento);
+    }
+    /**
+     *  borrarDepartamento
+     * 
+     *  @author Mario Labra Villar
+     * Ultima revision 30/01/2018
+     * 
+     * Nos dice si el departamento existe
+     * @param  $valor codigo del departamento
+     * @return  cadena de validacion
+     */
+    public static function comprobarYaExsistenteDep($valor){
+        return DepartamentoPDO::comprobarYaExistenteDep($valor);
     }
 
 }

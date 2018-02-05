@@ -1,0 +1,46 @@
+<?php
+
+/**
+ * Fichero soap.php
+ *
+ * Ultima revision 01/02/2018
+ * 
+ * @author Mario Labra Villar
+ */ 
+
+/**
+ * Clase soap
+ */
+class Soap {
+    
+    /**
+     *Clase uso de soap
+     * 
+     *  
+     *  Ultima revision 01/02/2018
+     * @author Mario Labra Villar
+     * 
+     * Rellena el array con los paramentros que va a recibir el soap
+     * @param  $unidad unidad
+     * @param  $de  unidad origen
+     * @param  $a   unidad destino
+     * @return type array
+     */
+    
+    public  static function usoSoap($unidad,$de,$a){
+    
+
+    $array = array(
+        'ComputerValue' => '',
+        'fromComputerUnit' => '',
+        'toComputerUnit' => ''
+    );
+    
+    return $array = array(
+        'ComputerValue' =>$unidad ,
+        'fromComputerUnit' => $de,
+        'toComputerUnit' => $a
+    );  
+    }
+}
+

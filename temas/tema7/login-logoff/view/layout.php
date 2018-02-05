@@ -14,9 +14,9 @@
             <div class="container">
                 <h1> Web de Mario</h1>
             </div>
-            <ul> 
-                <li id="salir"><a href="doc/index.html"><h3><i class="material-icons">note</i>PHPDoc</h3></a></li>
-            </ul>
+            
+              
+           
         </header>
         <?php
         //Intoducimos un valor en el layout
@@ -30,14 +30,16 @@
         include $layout;
         ?>
 
-        <footer>
-
-            <a href="https://github.com/MarioLV98/dwes.git"><img id="repositorio1" src="webroot/github.PNG"/></a>
-            <a  href="http://daw-usgit.sauces.local/MLV-1718/dwes"> <img  id="repositorio2" src="webroot/gitlab.PNG"/></a>
-            <h4> <form action="index.php?location=codigo" id="formulario" method="post">
-                    <input class="btn btn-info" type="submit" name="codigo" value="Ver Codigo"> 
-                </form>
-                Powered by <a href="../indextema6.html">Mario Labra</a></h4>
+        <footer >
+            
+            <a href="https://github.com/MarioLV98/dwes.git">GitHub</a>
+            <a  href="http://daw-usgit.sauces.local/MLV-1718/dwes">GitLab</a>
+            <form action="index.php?location=codigo" id="formulario" method="post">
+                    <input class="btn pull-right btn-info" type="submit" name="codigo" value="Ver Codigo"> 
+            </form>
+            <p><a class="btn pull-right btn-success" href="doc/index.html">PHPDoc</a></p>
+            <h4>Powered by <a href="../indextema6.html">Mario Labra</a></h4>
+           
         </footer>
 
     </body>

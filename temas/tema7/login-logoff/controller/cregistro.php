@@ -1,41 +1,41 @@
 
 <?php
 
-require_once  'model/Usuario.php';
-require_once  'model/validacion.php';
 
 
- //Si no hay sesion se realiza la validacion de usuario
-    $loginOK=false; //Sirve para comprobar que el usuario es correcto o no
-    if(isset($_POST['registrar']) && isset($_POST['usuario']) && isset($_POST['contrasena']) && isset($_POST['descripcion']) && isset($_POST['perfil'])){
+
+
+   
+    if(isset($_POST['registrar'])){//Si se pulsa registrar
         
-        
-        $validoUsuario = Validacion::comprobarYaExistente($_POST['usuario']);
-        $validoPass = Validacion::validarCadenaAlfanumerica($_POST['contrasena']);
-        $validoDesc = Validacion::validarCadenaAlfabetica($_POST['descripcion']);
-        $validoPerf = Validacion::validarCadenaAlfabetica($_POST['perfil']);
-       
+        //Guardamos en variables el resultado de las validaciones
+        $validoUsuario = Usuario::comprobarYaExistente($_POST['usuario']);
+        $validoPass = validarCadenaAlfanumerica($_POST['contrasena']);
+        $validoDesc = validarCadenaAlfabetica($_POST['descripcion']);
+        $validoPerf = validarCadenaAlfabetica($_POST['perfil']);
+        //Si el resultado de las validaciones es diferente al que deberia de ser cuando son correctas salta un error
         if($validoUsuario!=""|| $validoPass!="" || $validoDesc!="" ||$validoPerf!=""){ //Si no es correcto se muestra este mensaje
           echo "Error";
-           $errores['errorPassword']="<p style='text-align: center;margin-bottom: 10px;' class='error required_info'>Usuario o contraseña no válidos<p>"; 
-        }else{ //Si se devuelve el usuario loginOk se pone true
-            $loginOK=true;
+           
+        }else{ //Si es correcto se crea el usuario
+            //Actualizamos los accesos
+            $actualizarAccesos = Usuario::actualizarAccesos($_POST['usuario']);
+            //Actualizamos la fecha de acceso
+            $actualizarFechaAcceso = Usuario::actualizarFechaAcceso($_POST['usuario']);
+            //Registramos el usuario
             $usu = Usuario::registrarUsuario(trim($_POST['usuario']), hash('sha256', $_POST['contrasena']),$_POST['descripcion'],$_POST['perfil']);
-            
+            //Cargamos el usuario en la sesion
+             $_SESSION['usuario']=$usu;
+             //Nos redirige a incio
+              header('Location:index.php?location=inicio');
         }
     }
     
-    if(isset($_POST['cancelar'])){
+    if(isset($_POST['cancelar'])){ //Si pulsa caclear lleva al login
         header('Location:index.php?location=login');
-    }
-    
-    if($loginOK){//Si el login es correcto el usuario se guarda en la sesion y te lleva al index
-        $_SESSION['usuario']=$usu;
-        header('Location:index.php?location=inicio');
-        
-    }else{//Si no es correcto te lleva al formulario
+    }else{//Si no es correcto incluimos la vista
         include 'view/layout.php';
     }
-   
+    
 
 ?>

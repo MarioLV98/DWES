@@ -1,25 +1,42 @@
 <?php
+
 /**
  * Usuario.php
  * 
  * Usuario.php
  * 
  */
-require_once 'UsuarioPDO.php';
 
 /**
  * Clase Usuario
  */
+class Usuario {
 
-class Usuario{
-    
+     /**
+     * @var $codUsuario    Codigo del usuario
+     */
     private $codUsuario;
+    /**
+     * @var $descUsuario    Descripcion de usuario
+     */
     private $descUsuario;
+    /**
+     * @var $password    Contraseña
+     */
     private $password;
+    /**
+     * @var $perfil   Perfil de usuario
+     */
     private $perfil;
+    /**
+     * @var $ultimaConexion    Ultima conexion
+     */
     private $ultimaConexion;
+    /**
+     * @var $contadorAccesos    Contador de accesos
+     */
     private $contadorAccesos;
-    
+
     /**
      * Constructor
      * 
@@ -34,7 +51,6 @@ class Usuario{
      * @param date $ultimaConexion  fecha de ultima conexion
      * @param integer $contadorAccesos  numero de accesos
      */
-    
     function __construct($codUsuario, $descUsuario, $password, $perfil, $ultimaConexion, $contadorAccesos) {
         $this->codUsuario = $codUsuario;
         $this->descUsuario = $descUsuario;
@@ -43,6 +59,7 @@ class Usuario{
         $this->ultimaConexion = $ultimaConexion;
         $this->contadorAccesos = $contadorAccesos;
     }
+
     /**
      * Validar usuario
      * 
@@ -54,22 +71,19 @@ class Usuario{
      * @param string $password Contraseña que introducimos en el formulario
      * @return \Usuario Objeto usuario con la informacion del msmo
      */
-    
-    public static function validarUsuario($codUsuario,$password){
-        
-        $usuario= null;
-        
+    public static function validarUsuario($codUsuario, $password) {
+
+        $usuario = null;
+
         $arrayUsuario = UsuarioPDO::validarUsuario($codUsuario, $password);
         print_r($arrayUsuario);
-        if($arrayUsuario){
-         $usuario= new Usuario($codUsuario,$arrayUsuario['descUsuario'],$password,$arrayUsuario['perfil'],$arrayUsuario['ultimaConexion'],$arrayUsuario['contadorAccesos']);
-                 
+        if ($arrayUsuario) {
+            $usuario = new Usuario($codUsuario, $arrayUsuario['descUsuario'], $password, $arrayUsuario['perfil'], $arrayUsuario['ultimaConexion'], $arrayUsuario['contadorAccesos']);
         }
-        
+
         return $usuario;
-        
     }
-    
+
     /**
      * Registrar Usuario
      * 
@@ -77,82 +91,86 @@ class Usuario{
      * Esta funcion sirve para registrar un usuario
      * 
      * 
-     * @param type $codUsuario codigo de usuario
-     * @param type $password contraseña
-     * @return type boolean
+     * @param  $codUsuario codigo de usuario
+     * @param  $password contraseña
+     * @param  $desc descripcion
+     * @param  $perf perfil
+     * @return boolean
      */
-    
-     public static function registrarUsuario($codUsuario, $password ,$desc ,$perf){
-         
-         
-          $usuario= null;
-        
+    public static function registrarUsuario($codUsuario, $password, $desc, $perf) {
+
+
+        $usuario = null;
+
         $arrayUsuario = UsuarioPDO::registrarUsuario($codUsuario, $password, $desc, $perf);
         print_r($arrayUsuario);
-        if($arrayUsuario){
-         $usuario= new Usuario($codUsuario,$arrayUsuario['descUsuario'],$password,$arrayUsuario['perfil'],$arrayUsuario['ultimaConexion'],$arrayUsuario['contadorAccesos']);
-                 
+        if ($arrayUsuario) {
+            $usuario = new Usuario($codUsuario, $desc, $password, $perf,date("y-m-d"), 1);
         }
-        
+
         return $usuario;
-       
     }
-    
+
     /**
      * Modificar usuario
      * 
      * Ultima revision 30/01/2018
      * Esta funcion sirve para modificar un usuario
      * 
-     * @param type $codUsuario  codigo de usuario
-     * @param type $password    contraseña
-     * @param type $desc    descripcion 
-     * @param type $perf    perfil
-     * @return type boolean
+     * @param $codUsuario  codigo de usuario
+     * @param $password    contraseña
+     * @param  $desc    descripcion 
+     * @param $perf    perfil
+     * @return  boolean
      */
-    public static function modificiarUsuario($codUsuario, $password,$desc ,$perf){
-        return UsuarioPDO::modificarUsuario($codUsuario, $password,$desc ,$perf);
+    public static function modificiarUsuario($codUsuario, $password, $desc, $perf) {
+    
+            $arrayUsuario = UsuarioPDO::modificarUsuario($codUsuario, $password, $desc, $perf);
+            if($arrayUsuario){
+           $usuario = new Usuario($codUsuario,$desc,$password,$perf,date("y-m-d"),$_SESSION['usuario']->getContadorAccesos());
+            }
+      
+        return $usuario;
     }
+
     /**
      * Borrar usuario
      * 
      * Ultima revision 30/01/2018
      * Esta funcion sirve para borrar un usuario
      * 
-     * @param type $codUsuario codigo de usuario
-     * @return type boolean
+     * @param $codUsuario codigo de usuario
+     * @return  boolean
      */
-    public static function borrarUsuario($codUsuario){
+    public static function borrarUsuario($codUsuario) {
         return UsuarioPDO::borrarUsuario($codUsuario);
     }
-    
+
     /**
      * Actualizar accesos
      * 
      * Ultima revision 30/01/2018
      * Esta funcion sirve actualizar los accesos
      * 
-     * @param type $codUsuario
-     * @return type boolean
+     * @param $codUsuario
+     * @return  boolean
      */
-    
-    public static function actualizarAccesos($codUsuario){
-        
+    public static function actualizarAccesos($codUsuario) {
+
         return UsuarioPDO::actualizarAccesos($codUsuario);
     }
-    
-      /**
+
+    /**
      * Actualizar fecha acceso
      * 
      * Ultima revision 30/01/2018
      * Esta funcion sirve actualizar la fecha de acceso
      * 
-     * @param type $codUsuario
-     * @return type boolean
+     * @param  $codUsuario
+     * @return boolean
      */
-    
-     public static function actualizarFechaAcceso($codUsuario){
-        
+    public static function actualizarFechaAcceso($codUsuario) {
+
         return UsuarioPDO::actualizarFechaAcceso($codUsuario);
     }
 
@@ -165,23 +183,24 @@ class Usuario{
      * @author Mario Labra Villar
      * @return string $codUsuario Cadena con el codigo del usuario
      */
-            
     function getCodUsuario() {
         return $this->codUsuario;
     }
-  /**
-   * Descripcion
-   * 
-   * Ultima revision 19/01/2018
-   * Devuelve la descripcion del usuario
-   *    
-   * @author Mario Labra Villar
-   * @return string  $getDescUsuario Cadena con la descripcion del usuario
-   */
+
+    /**
+     * Descripcion
+     * 
+     * Ultima revision 19/01/2018
+     * Devuelve la descripcion del usuario
+     *    
+     * @author Mario Labra Villar
+     * @return string  $getDescUsuario Cadena con la descripcion del usuario
+     */
     function getDescUsuario() {
         return $this->descUsuario;
     }
-     /**
+
+    /**
      * Contraseña
      * 
      * Ultima revision 19/01/2018
@@ -193,8 +212,8 @@ class Usuario{
     function getPassword() {
         return $this->password;
     }
-    
-   /**
+
+    /**
      * Perfil
      * 
      * Ultima revision 19/01/2018
@@ -206,22 +225,21 @@ class Usuario{
     function getPerfil() {
         return $this->perfil;
     }
-    
-     /**
-      * Ultima conexion
-      * 
-      * @author Mario Labra Villar
-      * Ultima revision 19/01/2018
-      * 
-      * Devuelve la ultima conexion de un usuario
-      * @return date $utlimaConexion Ultima fecha de conexion
-      */
 
+    /**
+     * Ultima conexion
+     * 
+     * @author Mario Labra Villar
+     * Ultima revision 19/01/2018
+     * 
+     * Devuelve la ultima conexion de un usuario
+     * @return date $utlimaConexion Ultima fecha de conexion
+     */
     function getUltimaConexion() {
         return $this->ultimaConexion;
     }
-    
-     /**
+
+    /**
      * Contador de accesos
      *  
      * Ultima revision 19/01/2018
@@ -230,12 +248,52 @@ class Usuario{
      * @author Mario Labra Villar
      * @return integer $contadorAccesos Numero de accesos del usuario
      */
-
     function getContadorAccesos() {
         return $this->contadorAccesos;
     }
 
-  
+    /**
+     * commprobar Usuario
+     * 
+     * Ultima revision 01/02/2018
+     * Devuelve si el usuario existe o no
+     * 
+     * @param  $valor codigo del usuario
+     * @return  cadena de validacion
+     */
+    public static function comprobarUsuario($valor) {
+
+        return UsuarioPDO::comprobarUsuario($valor);
+    }
+    /**
+     * comprobar contraseña
+     * 
+     *  Ultima revision 01/02/2018
+     * Devuelve si la contraseña es correcta o no
+     * 
+     * @param $user usuario
+     * @param  $pass contraseña
+     * @return  cadena de validacion
+     */
+    public static function comprobarPassword($user, $pass) {
+        return UsuarioPDO::comprobarPassword($user, $pass);
+    }
+    
+    /**
+     * commprobar Usuario ya existente
+     * 
+     * Ultima revision 01/02/2018
+     * Devuelve si el usuario existe o no
+     * 
+     * @param  $valor codigo del usuario
+     * @return  cadena de validacion
+     */
+    public static function comprobarYaExistente($valor) {
+        return UsuarioPDO::comprobarYaExistente($valor);
+    }
+    
+    
+
 
 
 }

@@ -1,9 +1,13 @@
 <?php
-/*
- * Fichero departamento pdo
+/**
+ * Fichero DepartamentoPDO.php
+ * 
+ * Creacion departamentos
+ * 
+ * @package modelo
  */
 
-require_once 'DBPDO.php';
+
 
 /**
  * Clase departamento PDO
@@ -49,9 +53,9 @@ class DepartamentoPDO{
      * 
      * Pasa los datos del departamento,ejecuta la consulta y crea el departamento
      * 
-     * @param type $codDepartamento codio de departamento
-     * @param type $descDepartamento   descripcion de departamento
-     * @param type $volumenNegocio  volumen de negocio
+     * @param  $codDepartamento codio de departamento
+     * @param  $descDepartamento   descripcion de departamento
+     * @param  $volumenNegocio  volumen de negocio
      * @return boolean $inserccionOk confirma que la inserccion ha sido correcta
      */
     
@@ -74,9 +78,9 @@ class DepartamentoPDO{
      * 
      * Pasa los datos del departamento,ejecuta la consulta y modifica el departamento
      * 
-     * @param type $codDepartamento codio de departamento
-     * @param type $descDepartamento   descripcion de departamento
-     * @param type $volumenNegocio  volumen de negocio
+     * @param $codDepartamento codio de departamento
+     * @param $descDepartamento   descripcion de departamento
+     * @param $volumenNegocio  volumen de negocio
      * @return boolean $modificacionOk ccomprueba que la modificacion ha sido correcta
      */
     public static function modificarDepartamento($codDepartamento,$descDepartamento,$volumenNegocio){
@@ -99,7 +103,7 @@ class DepartamentoPDO{
      * 
      * Pasa los datos del departamento,ejecuta la consulta y borra el departamento
      * 
-     * @param type $codDepartamento codio de departamento
+     * @param $codDepartamento codio de departamento
      * @return boolean $borradoOk ccomprueba que se ha borrado correctamente
      */
     
@@ -114,4 +118,32 @@ class DepartamentoPDO{
         
         return $borradoOk;
     }
+    
+    /**
+     * Funcion para comprobar que un departamento ya existe
+     * 
+     * Ultima revision 30/01/2018
+     * Se crea la consulta y se le añaden los parametros que la clase DBPDO va a ejecutar
+     * 
+     * @param $valor codigo del usuario
+     * @return string con el resultado de la validacion
+     */
+    public static function comprobarYaExistenteDep($valor){
+     $valida = "";
+     
+     if(empty($valor)){
+         $valida="No ha introducido ningun valor";
+     }else{
+         
+         $consulta = "select * from Departamentos where codDepartamento ='$valor'";
+         $resultado = DBPDO::ejecutarConsulta($consulta, [$valor]);
+         if($resultado->rowCount()==1){
+       
+         $valida="El departamento ya existe";
+         
+        } 
+     }
+    
+     return $valida;
+} 
 }

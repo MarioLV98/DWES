@@ -11,7 +11,9 @@ $controladores =[
     'mantenimiento'=> 'controller/clistaDPTO.php',
     'creardpto'=>'controller/cnuevoDPTO.php',
     'modificardpto'=>'controller/cmodificarDPTO.php',
-    'borrardpto'=>'controller/cborrarDPTO.php'
+    'borrardpto'=>'controller/cborrarDPTO.php',
+    'wssoap'=>'controller/cWSSOAP.php',
+    'wsrest'=>'controller/cWSREST.php'
 ];
  
 
@@ -26,6 +28,8 @@ $vistas = [
     'mantenimiento'=> 'view/vListarDPTO.php',
     'creardpto'=>'view/vNuevoDPTO.php',
     'modificardpto'=>'view/vModificarDPTO.php',
-    'borrardpto'=>'view/vBorrarDPTO.php'
+    'borrardpto'=>'view/vBorrarDPTO.php',
+    'wssoap'=>'view/vWSSOAP.php',
+    'wsrest'=>'view/vWSREST.php'
 ];
 ?>

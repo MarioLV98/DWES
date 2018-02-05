@@ -1,38 +1,36 @@
 <?php
 
 
-require_once 'model/validacion.php';
 
-$borradoOk=false;
-if(!isset($_SESSION['usuario'])){
+
+
+if(!isset($_SESSION['usuario'])){//Si no hay usuario en lasesion redirige a login
     
     header('Location:index.php?location=login');
 }else{
-if(isset($_POST['moddpto'])){//Si se pulsa salir se cierra la sesion y te lleva al index
+if(isset($_POST['modifica'])){//Si se pulsa modificar se realizan las validaciones
     
-    $validoPass = Validacion::validarCadenaAlfanumerica($_POST['contrasenaregistro']);
-    $validoDesc = Validacion::validarCadenaAlfabetica($_POST['descripcionmod']);
-    $validoPerf = Validacion::validarCadenaAlfabetica($_POST['perfilmod']);
+    //Guardamos en variables el resultado de las validaciones
+    $validoPass = validarCadenaAlfanumerica($_POST['contrasenaregistro']);
+    $validoDesc = validarCadenaAlfabetica($_POST['descripcionmod']);
+    $validoPerf = validarCadenaAlfabetica($_POST['perfilmod']);
     
-    if($validoPass!=""||$validoDesc!=""||$validoDesc!=""){
+    //Si el resultado de las validaciones es erroneo no se modifica el usuario
+    if($validoPass!=""||$validoDesc!=""||$validoPerf!=""){
         
         echo "Error";
-    }else{
-        $borradoOk=true;
-        Usuario::modificiarUsuario(trim($_POST['usuario']), hash('sha256', $_POST['contrasenaregistro']),$_POST['descripcionmod'],$_POST['perfilmod']);
-        
+    }else{//Si el resultado de las validaciones es correcto se ejecuta la modifiacion
+     $usu= Usuario::modificiarUsuario(trim($_POST['usuario']), hash('sha256', $_POST['contrasenaregistro']),$_POST['descripcionmod'],$_POST['perfilmod']);
+     $_SESSION['usuario']=$usu;
+      header('Location:index.php?location=inicio');
     }
     
 }
 
-if(isset($_POST['cancelar'])){
+if(isset($_POST['cancelar'])){//Si se pulsa cancelar nos lleva a inicio
      header('Location:index.php?location=inicio');
+}else{//Si no, carga la vista
+   include 'view/layout.php';  
 }
 
-if($borradoOk){
-    session_destroy();
-    header('Location:index.php?location=login');
-}else{  
-    include 'view/layout.php';
-}
 }

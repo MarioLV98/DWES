@@ -1,6 +1,6 @@
 <?php
 
-require_once  'model/Usuario.php';
+
 
 if(isset($_SESSION['usuario'])){//Si hay sesion te lleva al index
     header("Location:index.php?location=inicio");

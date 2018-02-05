@@ -1,6 +1,5 @@
 header{
-    background-color: lightgreen;
-    position: fixed;
+    background-color: cadetblue;
     top: 0;
     width: 100%;
 }
@@ -8,6 +7,14 @@ header{
 #contenido{
     
     margin-top: 10%;
+}
+
+table{
+    text-align: center;
+}
+
+#registro{
+    margin-left: 40%;
 }
 
 #repositorio1{
@@ -50,8 +57,9 @@ div>img:hover{
 }
 
 footer{
-    background-color: lightgreen;
-    position: fixed;
+    margin-top: 5%;
+    background-color: cadetblue;
+    overflow: hidden;
     bottom: 0;
     width: 100%;
 }
@@ -61,35 +69,23 @@ li:hover{
     
 }
 
-footer>h4{
-    margin: 0 auto;
-    width: 7%;
-    -webkit-transition: all 0.7s ease;
-    -moz-transition: all 0.7s ease;
-    -ms-transition: all 0.7s ease;
-    -o-transition: all 0.7s ease;
-    transition: all 0.7s ease;
+
+
+a{
+    color:white;
 }
 
-footer>h4:hover{
-   -webkit-transform: rotate(360deg);
-    -moz-transform: rotate(360deg);
-    -ms-transform: rotate(360deg);
-    -o-transform: rotate(360deg);
-    transform: rotate(360deg);
-}
-
-ul>li{
-    display: inline-block;
-    transition: all 0.7s ease;
+#encuesta{
+    width: 25%;
+    margin-left: 38%
 }
 
 main{
-    background-color: lightgreen;
+    background-color: cadetblue;
     width: 80%;
     margin: 0 auto;
     margin-top: 10%;
-    height: 70%;
+    padding:1%;
 }
 
 article{

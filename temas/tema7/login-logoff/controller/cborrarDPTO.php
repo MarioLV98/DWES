@@ -1,24 +1,24 @@
 <?php
 
-require_once 'model/Usuario.php';
-require_once 'model/validacion.php';
 
-
-if(!isset($_SESSION['usuario'])){
+if(!isset($_SESSION['usuario'])){ //Si no hay usuario en lasesion redirige a login
     
     header('Location:index.php?location=login');
-}else{
+}else{//Si hay usuario
     
-    include 'view/layout.php';
+    
      
-if(isset($_POST['dptoborr'])){//Si se pulsa salir se cierra la sesion y te lleva al index
-    echo "Estamos borrando";
+if(isset($_POST['dptoborr'])){//Si se pulsa borrar departamento
+    //Borra el departamento 
     Departamento::borrarDepartamento($_POST['codDptoborr']);
+    //Redirige a manenimiento
      header('Location:index.php?location=mantenimiento');
 }
 
-if(isset($_POST['volverlista3'])){
+if(isset($_POST['volverlista3'])){//Si se pulsa volver vuelve a la pagina de mantenimiento(Lista de departamentos)
      header('Location:index.php?location=mantenimiento');
+}else{
+    include 'view/layout.php';
 }
 
 
